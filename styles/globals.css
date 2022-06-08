@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cantarell&family=Oxygen&family=Poppins:wght@700&family=Roboto&family=Ubuntu&display=swap');
+
 html,
 body {
   padding: 0;
@@ -18,80 +20,4 @@ body {
   min-height: 100vh;
   background: linear-gradient(to bottom, #e35b59, #e5a055);
   overflow-x: hidden;
-}
-
-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 30px 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 10000;
-}
-
-header ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-header ul li {
-  list-style-type: none;
-  margin-left: 20px;
-}
-
-header ul li a {
-  text-decoration: none;
-  padding: 6px 15px;
-  color: #fff;
-  border-radius: 20px;
-  transition: .25s;
-}
-
-header ul li a:hover,
-header ul li .active {
-  background-color: #fff;
-  color: #2b1055;
-}
-
-section {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  padding: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-section::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(to top, #f4ca6e, transparent);
-  z-index: 1002;
-}
-
-section img#desert {
-  z-index: 1001;
-}
-
-section img#cloud2 {
-  transform: translateY(150px);
-}
-
-section img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
 }

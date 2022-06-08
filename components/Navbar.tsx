@@ -1,18 +1,35 @@
 import { NextPage } from "next";
-import styles from '../styles/Home.module.css'
+
+import styles from "../styles/components/Navbar.module.css";
 
 const Navbar : NextPage = () => {
 
+    // button types
+    /**
+     * <li className="nav-item">
+            <a className="nav-link" href="#">Link</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link disabled">Disabled</a>
+          </li> */
+
     // TODO bootstrap navbar
-    return <header>
-        <a href="#" className={styles.logo}>Taco.</a>
-            <ul>
-            <li><a href="#" className={styles.active}>Home</a></li>
-            <li><a href="#team" >Team</a></li>
-            <li><a href="#" >Work</a></li>
-            <li><a href="#" >Contact</a></li>
+    return <nav className="navbar navbar-expand-lg navbar-transparent bg-transparent">
+    <div className="container-fluid">
+      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <a className={`navbar-brand ${styles.logo}`} href="#">Taco.</a>
+      <div className={`collapse navbar-collapse ${styles.header} `} id="navbar">
+        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li className="nav-item"><a className="nav-link active" aria-current="page" href="#">Home</a></li>
+          <li className="nav-item"><a className="nav-link active" aria-current="page" href="#team">Team</a></li>
+          <li className="nav-item"><a className="nav-link active" aria-current="page" href="#">Work</a></li>
+          <li className="nav-item"><a className="nav-link active" aria-current="page" href="#">Contact</a></li>
         </ul>
-    </header>
+      </div>
+    </div>
+  </nav>
 }
 
 export default Navbar;

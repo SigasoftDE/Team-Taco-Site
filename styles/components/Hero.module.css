@@ -1,0 +1,70 @@
+.section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #f4ca6e, transparent);
+    z-index: 1002;
+}
+
+.section img.desert {
+    z-index: 1001;  
+}
+
+.section img.cloud2 {
+    transform: translateY(150px);
+}
+
+
+.section img.logoImage {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    margin-top: 40px;
+    left: 50%;
+    margin-left: -25%;
+    z-index: 10000;
+}
+
+.section img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.btn {
+    text-align: center;
+    transform: translateY(100px);
+    background: white;
+    padding: 8px 30px;
+    color: #e35b59;
+    border-radius: 25px;
+    font-size: 1.25em;
+    text-decoration: none;
+    color: black;
+    z-index: 1000;
+}
+
+
+@media screen and (max-width: 735px) {
+    .section img.logoImage {
+        object-fit: none;
+        transform: scale(2);
+    }
+}

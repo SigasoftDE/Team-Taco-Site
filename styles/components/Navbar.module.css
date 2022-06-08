@@ -1,0 +1,39 @@
+.header {
+  margin-right: 150px;
+}
+
+.header ul li {
+  margin: 0 10px;
+}
+
+.header ul li a {
+  width: fit-content;
+  text-decoration: none;
+  padding: 6px 15px;
+  color: #fff;
+  border-radius: 20px;
+  transition: .25s;
+}
+
+.header ul li a:hover,
+.header ul li .active {
+    background-color: #fff;
+    color: #2b1055;
+}
+
+.logo {
+    padding: 30px 30px;
+
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: .5s;
+}
+
+.logo:hover {
+  color: #fff;
+  transform: scale(1.2);
+}
