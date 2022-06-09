@@ -4,6 +4,7 @@ import Script from 'next/script'
 import { useEffect } from 'react'
 import Hero from '../components/Hero'
 import Navbar from '../components/Navbar'
+import Sponsors from '../components/Sponsors'
 import Team from '../components/Team'
 
 import styles from '../styles/Home.module.css'
@@ -23,8 +24,8 @@ const Home: NextPage = () => {
 
       <Navbar />
       <Hero />
-
       <Team />
+      <Sponsors />
       
     </div>
   )

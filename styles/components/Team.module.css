@@ -1,26 +1,6 @@
 .pane {
     background: #f4ca6e;
-}
-
-.title {
-    position: relative;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    margin-bottom: 30px;
-}
-
-.title::after {
-    content: "";
-    position: absolute;
-    background: linear-gradient(to right, #e35b59, #e5a055);
-    height: 4px;
-    width: 60px;
-    
-    bottom: -5px;
-    margin-left: -30px;
-    left: 50%;
-    z-index: 10000;
-
+    padding-bottom: 30px;
 }
 
 .pb {
