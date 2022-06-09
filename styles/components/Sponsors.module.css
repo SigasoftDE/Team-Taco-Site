@@ -1,4 +1,8 @@
 .pane {
-    background: rgb(17, 100, 203);
+    background: #f4ca6e;
     padding: 50px 0;
+}
+
+.pondbg {
+    background: transparent url("http://localhost:3000/img/pond.svg") no-repeat;
 }

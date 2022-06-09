@@ -24,7 +24,7 @@ const Navbar : NextPage = () => {
         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
           <li className="nav-item"><a className="nav-link active" aria-current="page" href="#">Home</a></li>
           <li className="nav-item"><a className="nav-link active" aria-current="page" href="#team">Team</a></li>
-          <li className="nav-item"><a className="nav-link active" aria-current="page" href="#">Work</a></li>
+          <li className="nav-item"><a className="nav-link active" aria-current="page" href="#sponsors">Sponsoren</a></li>
           <li className="nav-item"><a className="nav-link active" aria-current="page" href="#">Contact</a></li>
         </ul>
       </div>
