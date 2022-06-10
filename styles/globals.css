@@ -22,6 +22,11 @@ body {
   overflow-x: hidden;
 }
 
+.text-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .section-title {
   position: relative;
