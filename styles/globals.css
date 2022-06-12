@@ -26,6 +26,12 @@ body {
   background: linear-gradient(to bottom, #e35b59, #e5a055);
 }
 
+.text-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .section-title {
   position: relative;
   margin-bottom: 25px;

@@ -54,6 +54,7 @@ const Sponsors : NextPage = () => {
 
                 </div>
                 <div className={`col-xs-12 col-md-6 ${styles.flexCenter}`}>
+
                     <h3>Marketing & Partnerschaften</h3>
 
                     <p>
