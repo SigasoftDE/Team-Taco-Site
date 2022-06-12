@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import styles from "../styles/components/Sponsors.module.css";
 
 const Sponsors : NextPage = () => {
-    return <div id="sponsors" className={styles.pane}>
+    return <div id="sponsors" className={styles.pane} data-aos="fade-up" data-aos-offset="300">
         <div className="container text-center">
             <h2 className="text-center section-title">Unsere Sponsoren</h2>
             <p>Sponsoren zu bekommen, war eines unserer
@@ -15,7 +15,7 @@ const Sponsors : NextPage = () => {
 
         <div className="container">
             <div className="row">
-                <div className="col-xs-12 col-md-6">
+                <div className={`col-xs-12 col-md-6  ${styles.scale}`}>
                     
                 <div id="carouselExampleCaptions" className="carousel slide carousel-fade" data-bs-ride="false">
                     <div className="carousel-indicators">
@@ -25,21 +25,21 @@ const Sponsors : NextPage = () => {
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
                     </div>
-                    <div className="carousel-inner">
+                    <div className={`carousel-inner`}>
                         <div className="carousel-item active">
-                            <img src="./img/sponsors/3DDesign24.png" className={`d-block w-100 ${styles.pondbg}`}/>
+                            <img src="./img/sponsors/3DDesign24.png" className={`d-block w-100}`}/>
                         </div>
                         <div className="carousel-item">
-                            <img src="./img/sponsors/originalraeder.png" className={`d-block w-100 ${styles.pondbg}`}/>
+                            <img src="./img/sponsors/originalraeder.png" className={`d-block w-100}`}/>
                         </div>
                         <div className="carousel-item">
-                            <img src="./img/sponsors/globus.png" className={`d-block w-100 ${styles.pondbg}`}/>
+                            <img src="./img/sponsors/globus.png" className={`d-block w-100}`}/>
                         </div>
                         <div className="carousel-item">
-                            <img src="./img/sponsors/volksbank.png" className={`d-block w-100 ${styles.pondbg}`}/>
+                            <img src="./img/sponsors/volksbank.png" className={`d-block w-100}`}/>
                         </div>
                         <div className="carousel-item">
-                            <img src="./img/sponsors/daheim_restaurant.png" className={`d-block w-100 ${styles.pondbg}`}/>
+                            <img src="./img/sponsors/daheim_restaurant.png" className={`d-block w-100}`}/>
                         </div>
                     </div>
                     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -53,7 +53,7 @@ const Sponsors : NextPage = () => {
                 </div>
 
                 </div>
-                <div className="col-xs-12 col-md-6">
+                <div className={`col-xs-12 col-md-6 ${styles.flexCenter}`}>
                     <h3>Marketing & Partnerschaften</h3>
 
                     <p>

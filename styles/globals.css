@@ -18,10 +18,13 @@ body {
 
 body {
   min-height: 100vh;
-  background: linear-gradient(to bottom, #e35b59, #e5a055);
+  background: #f4ca6e;
   overflow-x: hidden;
 }
 
+.bg {
+  background: linear-gradient(to bottom, #e35b59, #e5a055);
+}
 
 .section-title {
   position: relative;

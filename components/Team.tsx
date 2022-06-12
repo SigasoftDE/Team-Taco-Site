@@ -13,7 +13,7 @@ const Team : NextPage = () => {
                 Also das sind wir!</p>
             </div>
 
-            <div className={styles.pbRow}>
+            <div className={styles.pbRow} data-aos="fade-down">
                 <div className="col-md-3 col-sm-3 member">
                     <img src="./img/pb-blobs/dark-green.png" alt="dark-green-blob" className={styles.pb} />
                     <h4>Sebastian</h4>
@@ -28,7 +28,7 @@ const Team : NextPage = () => {
                 </div>
             </div>
 
-            <div className={styles.pbRow}>
+            <div className={styles.pbRow} data-aos="fade-up" data-aos-delay="300">
                 <div className="col-md-3 col-sm-3 member">
                     <img src="./img/pb-blobs/yellow.png" alt="orange-blob" className={styles.pb} />
                     <h4>Tom</h4>
