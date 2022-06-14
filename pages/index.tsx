@@ -6,6 +6,7 @@ import Hero from '../components/Hero'
 import Navbar from '../components/Navbar'
 import Sponsors from '../components/Sponsors'
 import Team from '../components/Team'
+import Separator from '../components/Separator'
 import AOS from 'aos';
 
 
@@ -37,6 +38,7 @@ const Home: NextPage = () => {
       
       <Team />
       <Sponsors/>
+      <Separator type="curve" />
       <Timeline />
       
       

@@ -42,31 +42,31 @@ const Timeline : NextPage = () => {
       contentBox.style.opacity = 0 + "";
     }
 
-    return <div onMouseLeave={leave} id="project-devlopment" className={`container ${styles.pane}`}>
-      
-      <div className="text-center">
-        <h2 className="section-title">Projektentwicklung</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et<br/> dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo<br/>do consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse ci</p>
-      </div>
+    return <div onMouseLeave={leave} id="project-devlopment" className={`${styles.pane}`}>
+      <div className="container">
+        <div className="text-center">
+          <h2 className="section-title">Projektentwicklung</h2>
+          <p className="zForward">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et<br/> dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo<br/>do consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse ci</p>
+        </div>
 
-      <div id="contentBox" className={styles.contentBox}>
-        <h1>This is my Text</h1>
-        <p>This is my formal content cringe.</p>
-      </div>
-      
-      <div id="timelineWrapper" className={styles.wrap}>
-        <div className={styles.links}>
-          {
-            data ? data.map((entry, index) => {
-              return <div id={`lane-${index}`} key={`lane-${index}`} onMouseOver={event => hover(index, entry)} className={styles.dot}>
-                <i className={`${styles.icon} ${entry.icon}`}></i>
-              </div>
-            }) : <></>
-          }
-            
+        <div id="contentBox" className={styles.contentBox}>
+          <h1>This is my Text</h1>
+          <p>This is my formal content cringe.</p>
+        </div>
+        
+        <div id="timelineWrapper" className={styles.wrap}>
+          <div className={styles.links}>
+            {
+              data ? data.map((entry, index) => {
+                return <div id={`lane-${index}`} key={`lane-${index}`} onMouseOver={event => hover(index, entry)} className={styles.dot}>
+                  <i className={`${styles.icon} ${entry.icon}`}></i>
+                </div>
+              }) : <></>
+            }
+              
+          </div>
         </div>
       </div>
-
       
     </div>
   

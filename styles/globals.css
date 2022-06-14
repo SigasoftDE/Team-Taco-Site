@@ -39,6 +39,10 @@ body {
   margin-bottom: 30px;
 }
 
+.zForward {
+  z-index: 20000;
+}
+
 .section-title::after {
   content: "";
   position: absolute;
