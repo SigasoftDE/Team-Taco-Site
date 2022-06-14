@@ -6,6 +6,7 @@ import dataFile from "../public/data/project-development.json";
 
 type DataType = {
   title:string,
+  icon:string,
   body:string
 }[]
 
@@ -57,7 +58,9 @@ const Timeline : NextPage = () => {
         <div className={styles.links}>
           {
             data ? data.map((entry, index) => {
-              return <div id={`lane-${index}`} key={`lane-${index}`} onMouseOver={event => hover(index, entry)} className={styles.dot}></div>
+              return <div id={`lane-${index}`} key={`lane-${index}`} onMouseOver={event => hover(index, entry)} className={styles.dot}>
+                <i className={`${styles.icon} ${entry.icon}`}></i>
+              </div>
             }) : <></>
           }
             
