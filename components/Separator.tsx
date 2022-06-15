@@ -4,28 +4,31 @@ import { useEffect } from "react";
 import styles from "../styles/components/Seperator.module.css";
 
 type Props = {
-    type: "curve" | "cycle";
+    type: "curve" | "cycle" | "wave";
     firstColor?: string;
     secondColor?: string;
+
+    wave?:string;
 }
 
 const Separator = (props:Props) => {
 
     useEffect(() => {
-        const curve = document.getElementById("curve");
-        curve?.style.setProperty("--data-firstCl", props.firstColor + "", "");
-        curve?.style.setProperty("--data-secondCl", props.secondColor + "", "");
+        if (props.type === "curve") {
+            const curve = document.getElementById("curve");
+            curve?.style.setProperty("--data-firstCl", props.firstColor + "", "");
+            curve?.style.setProperty("--data-secondCl", props.secondColor + "", "");
+        }
 
-        console.log(curve?.dataset);
     })
 
     return <div className={styles.pane}>
 
         {
             props.type === "curve" ?
-            (<div id="curve" className={styles.curve} >
-
-            </div>)
+            (<div id="curve" className={styles.curve} ></div>)
+            : props.type === "wave" ?
+            (<div className={`${styles.wave} ${styles[props.wave!]}`}></div>) 
             :
             (<></>)
         }

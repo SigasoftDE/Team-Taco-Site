@@ -4,16 +4,6 @@ import styles from "../styles/components/Navbar.module.css";
 
 const Navbar : NextPage = () => {
 
-    // button types
-    /**
-     * <li className="nav-item">
-            <a className="nav-link" href="#">Link</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link disabled">Disabled</a>
-          </li> */
-
-    // TODO bootstrap navbar
     return <nav className="navbar navbar-expand-lg navbar-transparent bg-transparent">
     <div className="container-fluid">
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +15,7 @@ const Navbar : NextPage = () => {
           <li className="nav-item"><a className="nav-link active" aria-current="page" href="#">Home</a></li>
           <li className="nav-item"><a className="nav-link active" aria-current="page" href="#team">Team</a></li>
           <li className="nav-item"><a className="nav-link active" aria-current="page" href="#sponsors">Sponsoren</a></li>
-          <li className="nav-item"><a className="nav-link active" aria-current="page" href="#">Contact</a></li>
+          <li className="nav-item"><a className="nav-link active" aria-current="page" href="#project-devlopment">Projektentwicklung</a></li>
         </ul>
       </div>
     </div>

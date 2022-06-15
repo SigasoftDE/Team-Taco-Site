@@ -3,10 +3,6 @@
     width: 100%;
 }
 
-.cringe {
-    color: var(--data-color);
-}
-
 .curve {
     position: absolute;
     height: 255px;
@@ -36,4 +32,14 @@
     background: var(--data-secondCl);
     transform: translate(-4%, 80%) scale(2, 1);
     z-index: -1;
+}
+
+.wave {
+    width: 100%;
+    height: 300px;
+}
+
+.wave1 {
+    background: url("../../public/img/utils/wave1.svg") no-repeat;
+    background-size: cover;
 }

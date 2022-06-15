@@ -40,6 +40,7 @@ const Home: NextPage = () => {
       <Sponsors/>
       <Separator type="curve" firstColor='#c19b48' secondColor='#c19b48' />
       <Timeline />
+      <Separator type="wave" wave='wave1' />
       
       
       
