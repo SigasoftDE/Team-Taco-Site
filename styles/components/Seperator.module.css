@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+.cringe {
+    color: var(--data-color);
+}
+
 .curve {
     position: absolute;
     height: 255px;
@@ -17,7 +21,7 @@
     border-radius: 250% 70%;
     width: 55%;
     height: 100%;
-    background-color: #c19b48;
+    background: var(--data-firstCl);
     transform: translate(85%, 80%) scale(2, 1);
     z-index: -1;
 }
@@ -29,7 +33,7 @@
     border-radius: 60% 500%;
     width: 55%;
     height: 100%;
-    background-color: #c19b48;
+    background: var(--data-secondCl);
     transform: translate(-4%, 80%) scale(2, 1);
     z-index: -1;
 }

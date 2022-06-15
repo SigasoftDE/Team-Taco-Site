@@ -38,13 +38,13 @@ const Home: NextPage = () => {
       
       <Team />
       <Sponsors/>
-      <Separator type="curve" />
+      <Separator type="curve" firstColor='#c19b48' secondColor='#c19b48' />
       <Timeline />
       
       
       
     </div>
-  )
+  ) // #c19b48
 }
 
 export default Home
