@@ -46,7 +46,7 @@ const Timeline : NextPage = () => {
     }
 
     return <div onMouseLeave={leave} id="project-devlopment" className={`${styles.pane}`}>
-      <div className="container">
+      <div className="container" data-aos="fade-up">
         <div className="text-center">
           <h2 className="section-title">Projektentwicklung</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et<br/> dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo<br/>do consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse ci</p>
@@ -76,6 +76,6 @@ const Timeline : NextPage = () => {
       
     </div>
   
-}
+} // <FontAwesomeIcon icon={faDiscord}/>
 
 export default Timeline;
