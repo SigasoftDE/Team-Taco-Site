@@ -13,6 +13,7 @@ import AOS from 'aos';
 import styles from '../styles/Home.module.css'
 import 'aos/dist/aos.css';
 import Timeline from '../components/Timeline'
+import Contact from '../components/Contact'
 
 const Home: NextPage = () => {
 
@@ -41,7 +42,7 @@ const Home: NextPage = () => {
       <Separator type="curve" firstColor='#c19b48' secondColor='#c19b48' />
       <Timeline />
       <Separator type="wave" wave='wave1' />
-      
+      <Contact />
       
       
     </div>

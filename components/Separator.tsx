@@ -19,7 +19,6 @@ const Separator = (props:Props) => {
             curve?.style.setProperty("--data-firstCl", props.firstColor + "", "");
             curve?.style.setProperty("--data-secondCl", props.secondColor + "", "");
         }
-
     })
 
     return <div className={styles.pane}>
