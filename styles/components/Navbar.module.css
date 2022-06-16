@@ -6,19 +6,19 @@
   margin: 0 10px;
 }
 
-.header ul li a {
+.headerAnchor {
   width: fit-content;
   text-decoration: none;
   padding: 6px 15px;
   color: #fff;
   border-radius: 20px;
   transition: .25s;
+  font-size: 1.5em;
 }
 
-.header ul li a:hover,
+.headerAnchor:hover,
 .header ul li .active {
-    background-color: #fff;
-    color: #2b1055;
+    color: var(--accent);
 }
 
 .logo {

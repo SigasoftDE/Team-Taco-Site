@@ -3,8 +3,9 @@ import { NextPage } from "next";
 import styles from "../styles/components/Sponsors.module.css";
 
 const Sponsors : NextPage = () => {
-    return <div id="sponsors" className={styles.pane} data-aos="fade-up" data-aos-offset="300">
-        <div className="container text-center">
+    return <div id="sponsors" className={styles.pane}>
+        
+        <div className="container text-center " data-aos="fade-up">
             <h2 className="text-center section-title">Unsere Sponsoren</h2>
             <p>Sponsoren zu bekommen, war eines unserer
                 wichtigsten Ziele im Verlaufe unserer Arbeit. <br />
@@ -13,7 +14,7 @@ const Sponsors : NextPage = () => {
                 Kontakt aufgenommen.</p>
         </div>
 
-        <div className="container">
+        <div className="container" data-aos="fade-up">
             <div className="row">
                 <div className={`col-xs-12 col-md-6  ${styles.scale}`}>
                     

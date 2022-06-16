@@ -38,8 +38,9 @@ const Home: NextPage = () => {
       </div>
       
       <Team />
+      <Separator type="wave" wave='wave2'/>
       <Sponsors/>
-      <Separator type="curve" firstColor='#c19b48' secondColor='#c19b48' />
+      <Separator type="wave" wave="wave3"  />
       <Timeline />
       <Separator type="wave" wave='wave1' />
       <Contact />
