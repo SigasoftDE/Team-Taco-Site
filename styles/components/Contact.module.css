@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .social {
@@ -28,4 +29,11 @@
 
 .icon {
     color: blacK;
+}
+
+.blog {
+    width: 300px;
+    text-decoration: none;
+    text-transform: uppercase;
+    height: fit-content;
 }

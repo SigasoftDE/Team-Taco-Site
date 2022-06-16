@@ -1,6 +1,9 @@
 import { NextPage } from "next";
 import { MouseEvent, useEffect, useState } from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram, faTiktok, faDiscord } from '@fortawesome/free-brands-svg-icons'
+
 import styles from "../styles/components/Timeline.module.css";
 import dataFile from "../public/data/project-development.json";
 
@@ -46,26 +49,29 @@ const Timeline : NextPage = () => {
       <div className="container">
         <div className="text-center">
           <h2 className="section-title">Projektentwicklung</h2>
-          <p className="zForward">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et<br/> dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo<br/>do consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse ci</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et<br/> dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo<br/>do consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse ci</p>
         </div>
 
         <div id="contentBox" className={styles.contentBox}>
           <h1>This is my Text</h1>
           <p>This is my formal content cringe.</p>
         </div>
-        
-        <div id="timelineWrapper" className={styles.wrap}>
-          <div className={styles.links}>
-            {
-              data ? data.map((entry, index) => {
-                return <div id={`lane-${index}`} key={`lane-${index}`} onMouseOver={event => hover(index, entry)} className={styles.dot}>
-                  <i className={`${styles.icon} ${entry.icon}`}></i>
-                </div>
-              }) : <></>
-            }
-              
+
+        <div className={styles.wrapperBox}>
+          <div id="timelineWrapper" className={styles.wrap}>
+            <div className={styles.links}>
+              {
+                data ? data.map((entry, index) => {
+                  return <div id={`lane-${index}`} key={`lane-${index}`} onMouseOver={event => hover(index, entry)} className={styles.dot}>
+                    <FontAwesomeIcon icon={faDiscord}/>
+                  </div>
+                }) : <></>
+              }
+                
+            </div>
           </div>
         </div>
+       
       </div>
       
     </div>
