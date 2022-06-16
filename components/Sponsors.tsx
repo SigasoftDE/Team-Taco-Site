@@ -28,19 +28,19 @@ const Sponsors : NextPage = () => {
                     </div>
                     <div className={`carousel-inner`}>
                         <div className="carousel-item active">
-                            <img src="./img/sponsors/3DDesign24.png" className={`d-block w-100}`}/>
+                            <img src="./img/sponsors/3DDesign24.png" className={`d-block w-100`}/>
                         </div>
                         <div className="carousel-item">
-                            <img src="./img/sponsors/originalraeder.png" className={`d-block w-100}`}/>
+                            <img src="./img/sponsors/originalraeder.png" className={`d-block w-100`}/>
                         </div>
                         <div className="carousel-item">
-                            <img src="./img/sponsors/globus.png" className={`d-block w-100}`}/>
+                            <img src="./img/sponsors/globus.png" className={`d-block w-100`}/>
                         </div>
                         <div className="carousel-item">
-                            <img src="./img/sponsors/volksbank.png" className={`d-block w-100}`}/>
+                            <img src="./img/sponsors/volksbank.png" className={`d-block w-100`}/>
                         </div>
                         <div className="carousel-item">
-                            <img src="./img/sponsors/daheim_restaurant.png" className={`d-block w-100}`}/>
+                            <img src="./img/sponsors/daheim_restaurant.png" className={`d-block w-100   `}/>
                         </div>
                     </div>
                     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
