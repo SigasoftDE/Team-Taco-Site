@@ -2,10 +2,12 @@ import { NextPage } from "next";
 import { MouseEvent, useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faTiktok, faDiscord } from '@fortawesome/free-brands-svg-icons'
+import brands from '@fortawesome/free-brands-svg-icons'
+import { faMoneyBill, faPenToSquare, faObjectUngroup, faCarTunnel, faPeopleGroup, faPenRuler} from '@fortawesome/free-solid-svg-icons'
 
 import styles from "../styles/components/Timeline.module.css";
 import dataFile from "../public/data/project-development.json";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 type DataType = {
   title:string,
@@ -14,6 +16,8 @@ type DataType = {
 }[]
 
 const Timeline : NextPage = () => {
+    const icons:IconProp[] = [faMoneyBill, faPenToSquare, faObjectUngroup, faCarTunnel, faPeopleGroup, faPenRuler];
+
     const [data, setData] = useState<DataType>(); 
     useEffect(() => {
       setData(dataFile);
@@ -49,7 +53,9 @@ const Timeline : NextPage = () => {
       <div className="container" data-aos="fade-up">
         <div className="text-center">
           <h2 className="section-title">Projektentwicklung</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et<br/> dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo<br/>do consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse ci</p>
+          <p>Das Teilnehmen an Meisterschaften erfordert eine Menge Zeit. Um diese Herausforderung zu bewältigen
+            arbeiten wir struktuiert und planen den gesamten Teilnahmeverlauf im voraus.
+          </p>
         </div>
 
         <div id="contentBox" className={styles.contentBox}>
@@ -63,7 +69,7 @@ const Timeline : NextPage = () => {
               {
                 data ? data.map((entry, index) => {
                   return <div id={`lane-${index}`} key={`lane-${index}`} onMouseOver={event => hover(index, entry)} className={styles.dot}>
-                    <FontAwesomeIcon icon={faDiscord}/>
+                    <FontAwesomeIcon icon={icons[index]}/>
                   </div>
                 }) : <></>
               }

@@ -14,6 +14,7 @@ import styles from '../styles/Home.module.css'
 import 'aos/dist/aos.css';
 import Timeline from '../components/Timeline'
 import Contact from '../components/Contact'
+import Footer from '../components/Footer'
 
 const Home: NextPage = () => {
 
@@ -44,6 +45,7 @@ const Home: NextPage = () => {
       <Timeline />
       <Separator type="wave" wave='wave1' />
       <Contact />
+      <Footer/>
       
       
     </div>
