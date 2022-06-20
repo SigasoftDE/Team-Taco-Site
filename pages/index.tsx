@@ -15,11 +15,18 @@ import 'aos/dist/aos.css';
 import Timeline from '../components/Timeline'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
+import axios from 'axios'
 
 const Home: NextPage = () => {
 
   useEffect(() => {
     AOS.init();
+  })
+
+  axios.post("http://localhost:3000/api", {
+    cringo: "Jo wtff"
+  }, { withCredentials: true}).then(resp => {
+    console.log(resp);
   })
 
   return (
