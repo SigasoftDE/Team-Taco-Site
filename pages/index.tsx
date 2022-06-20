@@ -2,19 +2,19 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Script from 'next/script'
 import { useEffect } from 'react'
-import Hero from '../components/Hero'
-import Navbar from '../components/Navbar'
-import Sponsors from '../components/Sponsors'
-import Team from '../components/Team'
-import Separator from '../components/Separator'
+import Hero from '../landing-components/Hero'
+import Navbar from '../landing-components/Navbar'
+import Sponsors from '../landing-components/Sponsors'
+import Team from '../landing-components/Team'
+import Separator from '../landing-components/Separator'
 import AOS from 'aos';
 
 
 import styles from '../styles/Home.module.css'
 import 'aos/dist/aos.css';
-import Timeline from '../components/Timeline'
-import Contact from '../components/Contact'
-import Footer from '../components/Footer'
+import Timeline from '../landing-components/Timeline'
+import Contact from '../landing-components/Contact'
+import Footer from '../landing-components/Footer'
 
 const Home: NextPage = () => {
 
