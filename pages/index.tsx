@@ -13,10 +13,9 @@ import AOS from 'aos';
 import styles from '../styles/Home.module.css'
 import 'aos/dist/aos.css';
 
-import Timeline from '../components/Timeline'
-import Contact from '../components/Contact'
-import Footer from '../components/Footer'
-import axios from 'axios'
+import Timeline from '../landing-components/Timeline'
+import Contact from '../landing-components/Contact'
+import Footer from '../landing-components/Footer'
 
 const Home: NextPage = () => {
 
@@ -24,11 +23,6 @@ const Home: NextPage = () => {
     AOS.init();
   })
 
-  axios.post("http://localhost:3000/api", {
-    cringo: "Jo wtff"
-  }, { withCredentials: true}).then(resp => {
-    console.log(resp);
-  })
 
   return (
     <div id="page">
