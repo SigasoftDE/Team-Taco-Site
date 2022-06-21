@@ -10,7 +10,7 @@
   width: fit-content;
   text-decoration: none;
   padding: 6px 15px;
-  color: #fff;
+  color: #fff !important;
   border-radius: 20px;
   transition: .25s;
   font-size: 1.5em;
