@@ -42,16 +42,16 @@
 }
 
 .wave1 {
-    background: url("../../public/img/utils/wave1.svg") no-repeat;
+    background: url("../../../public/img/utils/wave1.svg") no-repeat;
     background-size: cover;
 }
 
 .wave2 {
-    background: url("../../public/img/utils/wave2.svg") no-repeat;
+    background: url("../../../public/img/utils/wave2.svg") no-repeat;
     background-size: cover;
 }
 
 .wave3 {
-    background: url("../../public/img/utils/wave3.svg") no-repeat;
+    background: url("../../../public/img/utils/wave3.svg") no-repeat;
     background-size: cover;
 }

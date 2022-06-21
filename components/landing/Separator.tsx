@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { useEffect } from "react";
 
-import styles from "../styles/components/Seperator.module.css";
+import styles from "../../styles/components/landing/Seperator.module.css";
 
 type Props = {
     type: "curve" | "cycle" | "wave";

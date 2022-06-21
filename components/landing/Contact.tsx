@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faTiktok, faDiscord } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { NextPage } from "next";
-import styles from "../styles/components/Contact.module.css";
+import styles from "../../styles/components/landing/Contact.module.css";
 import { useEffect } from "react";
+import Link from "next/link";
 
 const Contact:NextPage = () => {
 
@@ -22,7 +23,11 @@ const Contact:NextPage = () => {
             </div>
 
             <div className={styles.socials}>
-                <a id="blogBtn" className={`${styles.social} ${styles.blog}`}>Unser Blog</a>
+                <Link href="/blog">
+                    <div id="blogBtn" className={`${styles.social} ${styles.blog}`}>
+                    Unser Blog
+                    </div>
+                </Link>
             </div>
         </div>
     </div>)

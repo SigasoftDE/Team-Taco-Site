@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import brands from '@fortawesome/free-brands-svg-icons'
 import { faMoneyBill, faPenToSquare, faObjectUngroup, faCarTunnel, faPeopleGroup, faPenRuler} from '@fortawesome/free-solid-svg-icons'
 
-import styles from "../styles/components/Timeline.module.css";
-import dataFile from "../public/data/project-development.json";
+import styles from "../../styles/components/landing/Timeline.module.css";
+import dataFile from "../../public/data/project-development.json";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 type DataType = {

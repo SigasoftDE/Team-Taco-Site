@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 import BlogInterface from './BlogPostInterface';
 import BlogPost from './BlogPost';
 
+const pageLimit = 10; 
+
 export class BlogHandler  {
     constructor() {
         if (mongoose.connections[0].readyState) {
@@ -17,6 +19,35 @@ export class BlogHandler  {
         }
     }
 
+    async fetchLatest(page:number) {
+        const totalPosts = await BlogPost.find().exec();
+        
+        const startIndex = Math.floor(totalPosts.length / pageLimit) * page;
+        const stopIndex = Math.min(startIndex + pageLimit, totalPosts.length);
+
+        const response:BlogInterface[] = [];
+
+        for (let i = startIndex; i < stopIndex; i++) {
+            const post:BlogInterface = {
+                _id: (totalPosts[i] as any)._id,
+                createdAt: (totalPosts[i] as any).createdAt,
+                updatedAt: (totalPosts[i] as any).updatedAt,
+                
+                state: (totalPosts[i] as any).state,
+                title: (totalPosts[i] as any).title,
+                body: (totalPosts[i] as any).body,
+                author: (totalPosts[i] as any).author,
+                images: (totalPosts[i] as any).images,
+                views: (totalPosts[i] as any).views
+            };
+
+           response.push(post); 
+        }
+
+        console.log("Fetched", response);
+    }
+
+
     async fetchPost(id:string) {
         return await BlogPost.findOne({ _id: id}).exec();
 
@@ -24,7 +55,6 @@ export class BlogHandler  {
     }
 
     async createPost(author:string, title:string, body:string) {
-
         const post = new BlogPost({
             title,
             body,

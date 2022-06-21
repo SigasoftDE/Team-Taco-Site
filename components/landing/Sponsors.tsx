@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 
-import styles from "../styles/components/Sponsors.module.css";
+import styles from "../../styles/components/landing/Sponsors.module.css";
 
 const Sponsors : NextPage = () => {
     return <div id="sponsors" className={styles.pane}>

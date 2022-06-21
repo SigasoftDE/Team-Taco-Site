@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 
-import styles from '../styles/components/Footer.module.css';
+import styles from '../../styles/components/landing/Footer.module.css';
 
 const Footer : NextPage = () => {
     return (<div id="footer" className={`w-100 text-center text-white ${styles.footer}`}>

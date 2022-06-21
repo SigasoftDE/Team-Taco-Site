@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 
-import styles from "../styles/components/Team.module.css";
+import styles from "../../styles/components/landing/Team.module.css";
 
 const Team : NextPage = () => {
     // TODO make them clickable

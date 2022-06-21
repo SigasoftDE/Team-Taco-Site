@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { useEffect } from "react";
 
-import styles from "../styles/components/Hero.module.css";
+import styles from "../../styles/components/landing/Hero.module.css";
 
 const Hero : NextPage = () => {
     useEffect(() => {

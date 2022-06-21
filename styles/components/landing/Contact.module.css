@@ -28,7 +28,9 @@
 }
 
 .social:hover {
+    cursor: pointer;
     transform: scale(1.1);
+    color: var(--bs-link-hover-color);
 }
 
 .icon {
