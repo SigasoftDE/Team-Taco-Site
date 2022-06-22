@@ -1,13 +1,13 @@
 import Head from "next/head";
 import { useState } from "react";
+import BlogList from "../../components/blog/BlogList";
 import Navbar from "../../components/landing/Navbar";
 import BlogInterface from "../../utils/backend/BlogPostInterface";
 
 const BlogListPage = () => {
     // is there a better way to implement scripts except for doing it on every page
     
-    const [posts, setPosts] = useState<BlogInterface>();
-    const [page, setPage] = useState<Number>(1);
+    
 
 
     return <section id="blogListPage">
@@ -21,7 +21,7 @@ const BlogListPage = () => {
         </Head>
 
         <Navbar />
-
+        
        
     </section>
 }

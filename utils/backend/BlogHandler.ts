@@ -4,9 +4,9 @@ import BlogPost from './BlogPost';
 
 const pageLimit = 10; 
 
-export class BlogHandler  {
+export default class BlogHandler  {
     constructor() {
-        if (mongoose.connections[0].readyState) {
+        if (!mongoose.connections || mongoose.connections[0].readyState) {
             return;
         } else {
             mongoose.connect(`${process.env.PART1}${process.env.CLUSTERUSER}:${process.env.CLUSTERPASSWORD}${process.env.USERDB}`, err => {
@@ -20,31 +20,33 @@ export class BlogHandler  {
     }
 
     async fetchLatest(page:number) {
-        const totalPosts = await BlogPost.find().exec();
+        console.log(mongoose.models);
+        console.log((await mongoose.models.BlogPost.find({}).exec())[0]);
         
-        const startIndex = Math.floor(totalPosts.length / pageLimit) * page;
-        const stopIndex = Math.min(startIndex + pageLimit, totalPosts.length);
+        // const startIndex = Math.floor(totalPosts.length / pageLimit) * page;
+        // const stopIndex = Math.min(startIndex + pageLimit, totalPosts.length);
 
         const response:BlogInterface[] = [];
 
-        for (let i = startIndex; i < stopIndex; i++) {
-            const post:BlogInterface = {
-                _id: (totalPosts[i] as any)._id,
-                createdAt: (totalPosts[i] as any).createdAt,
-                updatedAt: (totalPosts[i] as any).updatedAt,
+        // for (let i = startIndex; i < stopIndex; i++) {
+        //     const post:BlogInterface = {
+        //         _id: (totalPosts[i] as any)._id,
+        //         createdAt: (totalPosts[i] as any).createdAt,
+        //         updatedAt: (totalPosts[i] as any).updatedAt,
                 
-                state: (totalPosts[i] as any).state,
-                title: (totalPosts[i] as any).title,
-                body: (totalPosts[i] as any).body,
-                author: (totalPosts[i] as any).author,
-                images: (totalPosts[i] as any).images,
-                views: (totalPosts[i] as any).views
-            };
+        //         state: (totalPosts[i] as any).state,
+        //         title: (totalPosts[i] as any).title,
+        //         body: (totalPosts[i] as any).body,
+        //         author: (totalPosts[i] as any).author,
+        //         images: (totalPosts[i] as any).images,
+        //         views: (totalPosts[i] as any).views
+        //     };
 
-           response.push(post); 
-        }
+        //    response.push(post); 
+        // }
 
-        console.log("Fetched", response);
+        // console.log("Fetched", response);
+        return response;
     }
 
 
