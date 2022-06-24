@@ -1,4 +1,6 @@
-export default interface BlogInterface {
+import { Document } from "mongodb"
+
+interface BlogPost extends Document {
     createdAt: Date
     updatedAt: Date
     _id:string
@@ -10,3 +12,5 @@ export default interface BlogInterface {
     author:string
     views:number
 }
+
+export default BlogPost;

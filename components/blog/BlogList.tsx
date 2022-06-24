@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { useState } from "react";
-import BlogHandler from "../../utils/backend/BlogHandler";
-import BlogInterface from "../../utils/backend/BlogPostInterface";
+import BlogHandler from "../../utils/backend/blog/BlogHandlerndler";
+import BlogInterface from "../../utils/backend/blog/BlogPostgPost";
 
 const blogHandler = new BlogHandler();
 
