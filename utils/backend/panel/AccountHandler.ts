@@ -1,7 +1,10 @@
 import { MongoClient } from "mongodb";
 import clientPromise from "../Mongodb";
 import bcrypt from "bcryptjs";
+import {verify} from 'jsonwebtoken';
 import Account from "./Account";
+
+const secret = process.env.TOKEN_SECRET;
 
 export default class AccountHandler {
 
@@ -34,6 +37,19 @@ export default class AccountHandler {
         }
 
         return true;
+    }
+
+    verifyCookie(cookie:string) {
+        if (!secret) {
+            console.log("major problem no secret in .env");
+        }
+
+        try {
+            verify(cookie, secret!);   
+            return true;
+        } catch(e) {
+            return false;
+        }
     }
 
   
