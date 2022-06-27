@@ -10,7 +10,7 @@ export default async function (req:NextApiRequest, res:NextApiResponse) {
         return res.status(405).json({response: "Invalid credentials!"});
     }
 
-    if (await accHandler.createAccount(username, password)) {
+    if (await accHandler.createAccount(username, password, false)) {
         return res.status(200).json({ response: "Created account succesfully"});
     } else {
         return res.status(400).json({ response: "Account already exists!"});

@@ -1,14 +1,14 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import clientPromise from "../Mongodb";
 import bcrypt from "bcryptjs";
-import {verify} from 'jsonwebtoken';
+import {decode, verify} from 'jsonwebtoken';
 import Account from "./Account";
 
 const secret = process.env.TOKEN_SECRET;
 
 export default class AccountHandler {
 
-    async createAccount(username:string, password:string) {
+    async createAccount(username:string, password:string, administrator:boolean) {
         const col = await getCollection();
 
         if (await col.findOne({username})) {
@@ -17,10 +17,12 @@ export default class AccountHandler {
 
         const hash = await bcrypt.hash(password, 10);
         const account:Account = {
-            username, password: hash, administrator: false
+            username, password: hash, administrator
         }
         
-        await col.insertOne(account);
+        await col.insertOne({ username: account.username,
+            password: account.password,
+            administrator: account.administrator });
         return true;
     }
 
@@ -36,7 +38,7 @@ export default class AccountHandler {
             return false;
         }
 
-        return true;
+        return acc;
     }
 
     verifyCookie(cookie:string) {
@@ -52,7 +54,38 @@ export default class AccountHandler {
         }
     }
 
-  
+    getUser(cookie:string) {
+        try {
+            const token:Account = decode(cookie) as Account;
+            return token;
+        } catch(e) {
+            return null;
+        }
+    }
+
+    async getAll() {
+        const col = await getCollection();
+        const response = await col.find({}).project({ _id: 1, username: 1, administrator: 1}).toArray();
+        return response;
+    }
+
+    async deleteOne(id:string) {
+        const col = await getCollection();
+
+        const resp = await col.deleteOne({_id: new ObjectId(id)});
+        return resp;
+    }
+
+    async toggleAdministration(id:string) {
+        const col = await getCollection();
+        const acc = await col.findOne({_id: new ObjectId(id)});
+        if (!acc) {
+            return false;
+        }
+
+        col.updateOne({_id: new ObjectId(id)}, {$set: { administrator: !acc.administrator }}, {upsert: true});
+        return true;
+    }
 }
 
 const getCollection = async () => {

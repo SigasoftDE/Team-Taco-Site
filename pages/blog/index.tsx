@@ -3,8 +3,6 @@ import Head from "next/head";
 import { useState } from "react";
 import BlogList from "../../components/blog/BlogList";
 import Navbar from "../../components/landing/Navbar";
-import BlogHandler from "../../utils/backend/blog/BlogHandlerndler";
-import BlogInterface from "../../utils/backend/blog/BlogPostgPost";
 
 
 const BlogListPage = (props:BlogInterface[]) => {
@@ -30,14 +28,14 @@ const BlogListPage = (props:BlogInterface[]) => {
 }
 
 export async function getServerSideProps(ctx:any) {
-    const handler = new BlogHandler();
-    const data = await handler.fetchLatest(1);
+    // const handler = new BlogHandler();
+    // const data = await handler.fetchLatest(1);
 
-    const filtered = await JSON.parse(JSON.stringify(data));
+    // const filtered = await JSON.parse(JSON.stringify(data));
 
-    return { 
-        props: {filtered}
-    }
+    // return { 
+    //     props: {filtered}
+    // }
 }
 
 export default BlogListPage;

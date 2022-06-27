@@ -6,7 +6,7 @@ export default async function (req:NextApiRequest, res:NextApiResponse) {
     const jwt = cookies.authorization;
 
     if (!jwt) {
-        return res.json({ response: "You are not logged in!"});
+        return res.json({ success: false, response: "You are not logged in!"});
     } 
 
     const serialized = serialize("authorization", "", {
@@ -18,5 +18,5 @@ export default async function (req:NextApiRequest, res:NextApiResponse) {
     });
 
     res.setHeader("Set-Cookie", serialized);
-    res.status(200).json({response: "Successfully logged out!"});
+    res.status(200).json({success: true, response: "Successfully logged out!"});
 }

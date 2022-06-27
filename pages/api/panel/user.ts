@@ -9,8 +9,8 @@ export default async function (req:NextApiRequest, res:NextApiResponse) {
     const jwt = cookies.authorization;
 
     if (jwt && accHandler.verifyCookie(jwt)) {
-        return res.status(200).json({reponse: "Success", user: decode(jwt)});
+        return res.status(200).json({success: true, user: accHandler.getUser(jwt)});
     }
 
-    return res.status(404).json({response: "You are not logged in"});
+    return res.status(404).json({success: false, response: "You are not logged in"});
 }

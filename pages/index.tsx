@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Script from 'next/script'
 import { useEffect } from 'react'
 import Hero from '../components/landing/Hero'
 import Navbar from '../components/landing/Navbar'

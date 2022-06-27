@@ -9,11 +9,12 @@ const accHandler = new AccountHandler();
 export default async function handler(req:NextApiRequest, res:NextApiResponse) {
     const { username, password} = req.body;
 
-    if (await accHandler.verifyCredentials(username, password)) {
+    const acc = await accHandler.verifyCredentials(username, password);
+    if (acc) {
         const token = sign({
             exp: Math.floor(Date.now() / 1000) + 60 * 60 *24 * 30,
             username: username,
-            admin: false
+            administrator: acc.administrator
         }, secret!);
         
         const serialised = serialize("authorization", token, {
@@ -25,8 +26,8 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
         });
 
         res.setHeader("Set-Cookie", serialised);
-        res.status(200).json({response: "Success!"});
+        res.status(202).json({success: true, response: "Success!"});
     } else {
-        res.status(404).json({response: "Invalid credentials!"}); 
+        res.status(200).json({success: false, response: "Invalid credentials!"}); 
     }
 }
