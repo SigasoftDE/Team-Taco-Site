@@ -47,6 +47,11 @@ body {
   background: linear-gradient(to bottom, #e35b59, #e5a055);
 }
 
+.fullPageBg {
+  background: linear-gradient(to bottom, #e35b59, #e5a055);
+  min-height: 100vh;
+}
+
 .text-box {
   display: flex;
   flex-direction: column;

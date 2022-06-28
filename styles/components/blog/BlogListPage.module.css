@@ -1,0 +1,21 @@
+.lightBg {
+    color: white;
+    background: var(--accent) !important;
+    border-radius: 25px;
+    padding: 20px;
+    transition: .5s;
+}
+
+.lightBg:hover {
+    transform: scale(1.05);
+    cursor:pointer;
+    box-shadow: 4px 3px 125px -37px rgba(0,0,0,1) inset;
+    -webkit-box-shadow: 4px 3px 125px -37px rgba(0,0,0,1) inset;
+    -moz-box-shadow: 4px 3px 125px -37px rgba(0,0,0,1) inset;
+}
+
+.dashViewsIcon {
+    width: 20px;
+    transform: translateY(-9px);
+    color: lightgreen;
+}

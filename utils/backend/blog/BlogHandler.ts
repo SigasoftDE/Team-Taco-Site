@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 import { cloneElement } from 'react';
 import clientPromise from '../Mongodb';
 import BlogPost from './BlogPost';
@@ -46,7 +46,8 @@ export default class BlogHandler  {
 
 
     async fetchPost(id:string) {
-
+        const col = await getCollection();
+        return await col.findOne({ _id: new ObjectId(id) });
         // TODO format respond obj
     }
 

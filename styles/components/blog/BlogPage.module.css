@@ -1,0 +1,7 @@
+.topicPane {
+    color: white;
+    background: var(--theme);
+    border-radius: 25px;
+    margin: 0 30px;
+    padding: 20px;
+}
