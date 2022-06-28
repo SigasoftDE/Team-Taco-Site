@@ -47,7 +47,11 @@ export default class BlogHandler  {
 
     async fetchPost(id:string) {
         const col = await getCollection();
-        return await col.findOne({ _id: new ObjectId(id) });
+
+        const post = await col.findOne({ _id: new ObjectId(id) });
+        col.updateOne({ _id: new ObjectId(id) }, { $inc: { views: 1 } }, {upsert: true});
+
+        return post;
         // TODO format respond obj
     }
 

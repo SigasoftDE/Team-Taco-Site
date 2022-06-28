@@ -8,9 +8,15 @@ import styles from '../../styles/components/blog/BlogPage.module.css';
 import AccountHandler from "../../utils/backend/panel/AccountHandler";
 import BlogHandler from "../../utils/backend/blog/BlogHandler";
 import BlogPost from "../../utils/backend/blog/BlogPost";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-regular-svg-icons";
+
+import listStyles from '../../styles/components/blog/BlogListPage.module.css';
 
 const BlogPage = (props:any) => {
-    console.log(props.post);
+    const { post, loggedIn } = props;
+    const created = new Date(post.createdAt);
+
 
     return <div className="fullPageBg">
         <Head>
@@ -25,6 +31,19 @@ const BlogPage = (props:any) => {
         <Navbar />
 
         <div className={styles.topicPane}>
+            <h3>{post.title}</h3>
+            <p>{props.authorName} | {created.getDate() +  "." + created.getMonth() + "." + created.getFullYear()}</p>
+
+            <div className="d-flex mt-3">
+                <FontAwesomeIcon className={listStyles.dashViewsIcon} icon={faEye}/>
+                <p className={`mx-2`}>{post.views}</p>
+            </div>
+
+            <div className="row">
+                <p className="col-xs-12 col-md-8" dangerouslySetInnerHTML={{__html: post.body.replaceAll(/\n/g, "<br />")}}></p>
+                <img src="/logo.svg" alt="blogImage"  className="col-xs-12 col-md-4 bg-transparent" />
+            </div>
+            
         </div>
 
     </div>
@@ -37,11 +56,14 @@ export async function getServerSideProps(ctx:any) {
     const loggedIn = !cookies.authorization || new AccountHandler().verifyCookie(cookies.authorization!);
 
 
-    const handler = new BlogHandler();
-    const post = await JSON.parse(JSON.stringify(await handler.fetchPost(id)));
-    
+    const bHandler = new BlogHandler();
+    const post = await JSON.parse(JSON.stringify(await bHandler.fetchPost(id)));
+
+    const aHandler = new AccountHandler();
+    const authorName = (await aHandler.getUserById(post.author))?.username;
+
     return { 
-        props: { post, loggedIn }
+        props: { post, loggedIn, authorName }
     }
 }
 

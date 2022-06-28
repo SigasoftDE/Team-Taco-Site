@@ -63,6 +63,13 @@ export default class AccountHandler {
         }
     }
 
+    async getUserById(id:string) {
+        const col = await getCollection();
+        const acc = await col.findOne({_id: new ObjectId(id)});
+
+        return acc;
+    }
+
     async getAll() {
         const col = await getCollection();
         const response = await col.find({}).project({ _id: 1, username: 1, administrator: 1}).toArray();
