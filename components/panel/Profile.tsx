@@ -3,16 +3,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { NextPage } from "next";
 import { useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 import styles from "../../styles/components/panel/BlogDashboard.module.css";
 import BlogPost from "../../utils/backend/blog/BlogPost";
 import { myAccountContext } from "./AccountContext";
+import UploadButton from "./utils/UploadButton";
 
 let lastFetch:number = -1;
 
-const Profile : NextPage = () => {
+const Profile = (props:{ profilePicture:string }) => {
     const [articles, setArticles] = useState<BlogPost[]>();
     const ctx = useContext(myAccountContext);
+
+    console.log(props);
 
     const getArticles = async () => {
         if (lastFetch + 1000 > Date.now()) {
@@ -27,8 +31,19 @@ const Profile : NextPage = () => {
     
         if (res.data.success) {
             const newArticles = res.data.response;
-            console.log(newArticles);
             setArticles(newArticles);
+        }
+    }
+
+    const updateProfile = async (file:string) => {
+        console.log("updaing profile picture", file);
+        const res = await axios.post("api/panel/protect/users", {
+            order: "updateProfilePicture",
+            picture: file
+        }, { withCredentials: true });
+
+        if (!res.data.success) {
+            Swal.fire("Fehler", "Profil konnten nicht gesetzt werden", "error");
         }
     }
 
@@ -38,10 +53,10 @@ const Profile : NextPage = () => {
 
     return <div className={`text-light ${styles.topicPane} d-flex`}>
         <div className={`col-lg-4 d-flex flex-column justify-content-center align-items-center`}>
-            <img src="./logo.svg" alt="profilepicture" width={128} height={128} className={styles.profileIcon} />
+            <img src={props.profilePicture === "taco-default" ? "./logo.svg" : "./user-uploads/" + ctx?._id + "/" + props.profilePicture} alt="profilepicture" width={128} height={128} className={styles.profileIcon} />
        
             <h5 className={`mt-4`}>Profilbild</h5>
-            <div className="btn btn-outline-light">Ändern</div> <p></p><br/>
+            <UploadButton callback={updateProfile} title="Ändern" /> <p></p><br/>
 
             <h5 >Benutzername</h5>
             <p className={styles.thinSmall}>{ctx?.username}</p> <br/>      

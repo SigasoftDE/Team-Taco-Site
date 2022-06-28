@@ -3,8 +3,8 @@ import { NextPage } from "next";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 
-import styles from "../../styles/components/panel/BlogDashboard.module.css";
-import { myAccountContext } from "./AccountContext";
+import styles from "../../../styles/components/panel/BlogDashboard.module.css";
+import { myAccountContext } from "../AccountContext";
 
 const BlogCreate : NextPage = () => {
     const [visibility, setVisibility] = useState<"published" | "draft" | "removed" | "hidden">("draft");

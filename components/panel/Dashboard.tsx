@@ -2,7 +2,6 @@ import { NextPage } from "next";
 
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 
-
 import styles from "../../styles/components/panel/BlogDashboard.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
@@ -29,7 +28,6 @@ const Dashboard : NextPage = () => {
             const { newest, mostViewed } = res.data.response;
             setNewest(newest);
             setMostViewed(mostViewed);
-            console.log(newest);
         }
     }
 

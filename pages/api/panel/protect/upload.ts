@@ -1,26 +1,50 @@
 import nextConnect from 'next-connect';
 import multer from 'multer';
-
-const upload = multer({
-    storage: multer.diskStorage({
-        destination: './public/uploads/user1',
-        filename: (req, file, cb) => cb(null, file.originalname),
-    }),
-});
+import cookie from 'cookie';
+import Account from '../../../../utils/backend/panel/Account';
+import AccountHandler from '../../../../utils/backend/panel/AccountHandler';
+import fs from 'fs';
 
 const apiRoute = nextConnect({
     onError(error, req, res:any) {
-        res.status(501).json({ error: `Sorry something Happened! ${error.message}` });
+        res.status(200).json({ success: false, response: error.message });
     },
     onNoMatch(req, res) {
-        res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
+        res.status(200).json({ success: false, response: `Method '${req.method}' Not Allowed` });
     },
 });
 
-apiRoute.use(upload.array('theFiles'));
+const upload = multer({
+    storage: multer.diskStorage({
+        destination: (req, file, cb) => {
+            if (!req.headers.cookie) {
+                return cb(new Error('Not authorized'), "./public/user-uploads/unknown/");
+            }
+            
+            const cookies = cookie.parse(req.headers.cookie!);
+            const acc:Account = new AccountHandler().getUser(cookies.authorization!)!;
+
+            if (!acc) {
+                return cb(new Error('Not authorized'), "./public/user-uploads/unknown/");
+            }
+
+            const path = './public/user-uploads/' + acc._id;
+            if (!fs.existsSync(path)) {
+                fs.mkdirSync(path, { recursive: true });
+            }
+
+            cb(null, './public/user-uploads/' + acc._id);
+        },
+        filename: (req, file, cb) => cb(null, file.originalname)
+    }),
+});
+
+apiRoute.use(upload.array('files'));
 
 apiRoute.post((req, res) => {
-    res.status(200).json({ data: 'success' });
+    res.status(200).json({ success: true });
+
+    
 });
 
 export default apiRoute;

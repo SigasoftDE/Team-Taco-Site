@@ -33,6 +33,7 @@ const PanelNav = (props:Props) => {
             <div onClick={e => updateSelection(e.currentTarget.innerHTML)} className={styles.navItem}>Users</div>
             <div onClick={e => updateSelection(e.currentTarget.innerHTML)} className={styles.navItem}>Blog</div>
             <div onClick={e => updateSelection(e.currentTarget.innerHTML)} className={styles.navItem}>Profile</div>
+            <div onClick={e => updateSelection(e.currentTarget.innerHTML)} className={styles.navItem}>Bilder</div>
             <div onClick={logout} className={`btn-danger ${styles.navItem}`}>Logout</div>
         </div>
     </div>)

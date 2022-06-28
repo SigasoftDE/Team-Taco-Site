@@ -7,7 +7,7 @@ import blogPost from "../../pages/blog/[id]";
 
 import styles from "../../styles/components/panel/BlogDashboard.module.css";
 import BlogPost from "../../utils/backend/blog/BlogPost";
-import BlogCreate from "./BlogCreate";
+import BlogCreate from "./utils/BlogCreate";
 
 let maxPage = -1;
 let lastFetch:number = -1;

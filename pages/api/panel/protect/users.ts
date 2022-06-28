@@ -62,4 +62,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         return res.json({success: true, response: "Success!"});
     }
     
+    if (order == "updateProfilePicture") {
+        const { picture } = req.body;
+        const account = accHandler.getUser(req.cookies.authorization!)!;
+
+        if (!picture) {
+            return res.json({success: false, response: "No picture provided!"});
+        }
+
+        const feedback = await accHandler.updateProfilePicture(account._id!, picture);
+        if (feedback) {
+            return res.json({success: true, response: "Success!"});
+        } else {
+            return res.json({success: false, response: "Error!"});
+        }
+        
+    }
+
 }

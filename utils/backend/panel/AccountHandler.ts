@@ -17,12 +17,26 @@ export default class AccountHandler {
 
         const hash = await bcrypt.hash(password, 10);
         const account:Account = {
-            username, password: hash, administrator
+            username, password: hash, administrator, profilePicture: "taco-default"
         }
         
         await col.insertOne({ username: account.username,
             password: account.password,
-            administrator: account.administrator });
+            administrator: account.administrator,
+            profilePicture: account.profilePicture });
+        return true;
+    }
+
+    async updateProfilePicture(id:string, picture:string) {
+        const col = await getCollection();
+        const acc = await col.findOne({_id: new ObjectId(id)});
+        console.log(acc);
+        if (!acc) {
+            return false;
+        }
+
+        
+        col.updateOne({_id: new ObjectId(id)}, {$set: { profilePicture: picture }}, {upsert: true});
         return true;
     }
 
