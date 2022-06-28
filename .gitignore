@@ -6,6 +6,8 @@
 .pnp.js
 .env
 
+/public/user-uploads
+
 # testing
 /coverage
 
