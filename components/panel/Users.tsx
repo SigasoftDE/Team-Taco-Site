@@ -12,6 +12,7 @@ let lastFetch:number = -1;
 const Users : NextPage = () => {
     const [users, setUsers] = useState<Account[]>();
     const ctx = useContext(myAccountContext);
+    let userCache = [];
 
     const updateUsers = async () => {
         if (lastFetch + 1000 > Date.now()) {
@@ -41,26 +42,29 @@ const Users : NextPage = () => {
         </div>
 
         
-
-        { (users && Object.entries(users!).length !== 0) ? users.map((user:Account, index) => {
-            return <div key={`account-${index}`} className={styles.userBox}>
-                <h3>{user.username}</h3>
-                <div className={styles.userSettings}> 
-                    <p>Administrator: {user.administrator ? "Ja" : "Nein"}</p>
-
-                    
-                </div>
-                { ctx?.administrator ? 
-                    <div className={styles.userOptions}>
-                        <div onClick={e => toggleAdminsitration(user)} className={`btn-sm btn-primary btn ${styles.userButton}`}>Toggle Administration</div>
-                        <div onClick={e => deleteAccount(user)} className={`btn-sm btn-danger btn ${styles.userButton}`}>Account Löschen</div>
-                    </div> : null }
+        <div className={styles.userWrap}>
+            { (users && Object.entries(users!).length !== 0) ? users.map((user:Account, index) => {
                 
 
-            </div>
-        }) 
-        : 
-        (<div></div>) }
+                return <div key={`account-${index}`} className={`${styles.lightBg} ${styles.userBox} my-4 mx-2 w-25`}>
+                    <h3>{user.username}</h3>
+                    <div className={styles.userSettings}> 
+                        <p>Administrator: {user.administrator ? "Ja" : "Nein"}</p>
+
+                    </div>
+
+                    { ctx?.administrator ? 
+                        <div className={styles.userOptions}>
+                            <div onClick={e => toggleAdminsitration(user, ctx)} className={`btn-sm btn-outline-light btn ${styles.userButton}`}>Switch Admin</div>
+                            <div onClick={e => deleteAccount(user)} className={`btn-sm btn-danger btn ${styles.userButton}`}>Account Löschen</div>
+                        </div> : null }
+                    
+
+                </div>
+            }) 
+            : 
+            (<div></div>) }
+        </div>
     </div>;
 }
 
@@ -110,7 +114,13 @@ const createAccount = async () => {
     }
 }
 
-const toggleAdminsitration = async (user:Account) => {
+const toggleAdminsitration = async (user:Account, ctx:Account) => {
+    if (user.username === ctx.username) {
+        Swal.fire("Achtung!", "Du kannst dich nicht selbst als Administrator ändern.", "warning");
+        return;
+    }
+
+
     const res = await axios.post("/api/panel/protect/users", {
         order: "toggleAdmin",
         id: user._id

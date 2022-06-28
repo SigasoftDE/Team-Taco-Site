@@ -25,15 +25,16 @@ const BlogDashboard : NextPage = () => {
         }
     }
 
-    return <div className="bg vh-100">
+
+    return <div className={`bg ${styles.panelPane}`}>
         <Head>
             <title>Team taco. | Panel</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"  />
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" ></script>
-            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
         </Head>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" ></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 
         <div className={`container bg-transparent ${styles.panel}`}>
             <PanelNav updateSelection={(newSel) => setSelection(newSel)} />

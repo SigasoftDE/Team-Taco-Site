@@ -2,10 +2,9 @@ import { Document } from "mongodb"
 
 interface BlogPost extends Document {
     createdAt: Date
-    updatedAt: Date
-    _id:string
+    _id?:string
 
-    state: "published" | "draft" | "removed"
+    visibility: "published" | "draft" | "removed" | "hidden"
     title:string
     body:string
     images:string[]

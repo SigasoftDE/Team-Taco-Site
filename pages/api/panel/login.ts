@@ -14,6 +14,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse) {
         const token = sign({
             exp: Math.floor(Date.now() / 1000) + 60 * 60 *24 * 30,
             username: username,
+            _id: acc._id,
             administrator: acc.administrator
         }, secret!);
         

@@ -3,38 +3,45 @@ import { cloneElement } from 'react';
 import clientPromise from '../Mongodb';
 import BlogPost from './BlogPost';
 
-const pageLimit = 10; 
+const pageLimit = 8; 
 
 export default class BlogHandler  {
 
-    async fetchLatest(page:number) {
+    async fetchLatest(page:number, loggedIn:boolean) {
         const col = await getCollection();
-        console.log(await col.find({}).toArray());
-        
-        // const startIndex = Math.floor(totalPosts.length / pageLimit) * page;
-        // const stopIndex = Math.min(startIndex + pageLimit, totalPosts.length);
+        const response:any = await col.find({}).sort({ createdAt: -1 }).toArray(); // createdAt: -1 is descending order (newest first)
 
+        const filtered:BlogPost[] = [];
+
+        if (!loggedIn) {
+            response.map((post:BlogPost) => {
+                if (post.visibility === "published") {
+                    filtered.push(post);
+                }
+            });
+        }
+
+        return (loggedIn ? response : filtered).slice((page-1)*pageLimit, page*pageLimit);
+    }
+
+    async getMaxPages() {
+        const col = await getCollection();
         const response:any = await col.find({}).toArray();
+        return Math.ceil(response.length/pageLimit);
+    }
 
-        // for (let i = startIndex; i < stopIndex; i++) {
-        //     const post:BlogInterface = {
-        //         _id: (totalPosts[i] as any)._id,
-        //         createdAt: (totalPosts[i] as any).createdAt,
-        //         updatedAt: (totalPosts[i] as any).updatedAt,
-                
-        //         state: (totalPosts[i] as any).state,
-        //         title: (totalPosts[i] as any).title,
-        //         body: (totalPosts[i] as any).body,
-        //         author: (totalPosts[i] as any).author,
-        //         images: (totalPosts[i] as any).images,
-        //         views: (totalPosts[i] as any).views
-        //     };
+    async fetchMostviewed(targetId:string) {
+        const col = await getCollection();
+        return await col.find({ author: targetId}).sort({ views: -1 }).limit(6).toArray();
+    }
 
-        //    response.push(post); 
-        // }
+    async fetchDashboard() {
+        const col = await getCollection();
 
-        // console.log("Fetched", response);
-        return response;
+        const newest = await col.find({}).sort({ createdAt: -1 }).limit(3).toArray();
+        const mostViewed = await col.find({}).sort({ views: -1 }).limit(3).toArray();
+
+        return { newest, mostViewed };
     }
 
 
@@ -43,7 +50,20 @@ export default class BlogHandler  {
         // TODO format respond obj
     }
 
-    async createPost(author:string, title:string, body:string) {
+    async createPost(author:string, title:string, body:string, visibility: "published" | "draft" | "removed" | "hidden") {
+        const col = await getCollection();
+
+        const post:BlogPost = {
+            createdAt: new Date(),
+            visibility,
+            title,
+            body,
+            images: [],
+            author,
+            views: 0
+        }
+
+        await col.insertOne(post as any);
     }
 
     async updatePost(post:BlogPost) {
