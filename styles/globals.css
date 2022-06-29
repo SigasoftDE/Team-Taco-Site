@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cantarell&family=Oxygen&family=Poppins:wght@700&family=Roboto&family=Ubuntu&display=swap');
 
 :root {
-  --accent: rgb(68, 67, 67);
+  --accent: #603434;
   --lightAccent: rgb(138, 138, 138);
-  --theme: rgb(43, 42, 42);
+  --theme: #954343;
 }
 
 html,

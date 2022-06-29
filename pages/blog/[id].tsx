@@ -60,6 +60,10 @@ const BlogPage = (props:any) => {
     }
 
     const updatePost = async () => {
+        if (body.includes("script")) {
+            return Swal.fire("Fehler", "Der Text enthält einen JavaScript-Code", "error");
+        }
+
         const res = await axios.post("/api/panel/protect/blog", {
             order: "updatePost",
             title, body, visibility, id: post._id
@@ -142,7 +146,7 @@ const BlogPage = (props:any) => {
                     
                 </div>
 
-                <div className="d-flex">
+                <div className="d-flex mt-3">
                     { loggedIn ? <div onClick={e => setEditing(!editing)} className="btn btn-outline-light mx-2">Bearbeiten</div> : null }
 
                     { editing ? <>

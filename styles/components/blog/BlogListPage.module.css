@@ -1,6 +1,6 @@
 .lightBg {
     color: white;
-    background: var(--accent) !important;
+    background: #954343;
     border-radius: 25px;
     padding: 20px;
     transition: .5s;

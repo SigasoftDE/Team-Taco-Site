@@ -23,6 +23,10 @@ export default async function (req:NextApiRequest, res:NextApiResponse) {
             return res.json({success: false, response: "No title, body or visibility provided!"});
         }
 
+        if (body.contains("script")) {
+            return res.json({success: false, response: "Scripts are not allowed!"});
+        }
+
         blogHandler.createPost(account._id!, title, body, visibility);
         return res.json({success: true, response: "Success!"});
     }
@@ -51,6 +55,11 @@ export default async function (req:NextApiRequest, res:NextApiResponse) {
 
     if (order === "updatePost") {
         const { id, title, body, visibility } = req.body;
+
+        if (body.contains("script")) {
+            return res.json({success: false, response: "Scripts are not allowed!"});
+        }
+
         if (!id || !title || !body || !visibility) {
             return res.json({success: false, response: "No id, title, body or visibility provided!"});
         }

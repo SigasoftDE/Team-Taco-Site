@@ -56,6 +56,10 @@ const BlogCreate : NextPage = () => {
 const saveArticle = async (title: string, body: string, visibility: "published" | "draft" | "removed" | "hidden") => {
     const article = { order: "create", title, body, visibility };
 
+    if (body.includes("script")) {
+        return Swal.fire("Fehler", "Der Text enthält einen JavaScript-Code", "error");
+    }
+
     const response = await axios.post("api/panel/protect/blog", article, {withCredentials: true});
     if (response.data.success) {
         Swal.fire({ title: "Erfolgreich", text: "Artikel wurde erstellt", icon: "success", timer: 1000, showCloseButton: false });

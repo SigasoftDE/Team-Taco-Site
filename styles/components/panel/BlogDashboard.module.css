@@ -12,7 +12,7 @@
 
 .lightBg {
     color: white;
-    background: var(--accent) !important;
+    background: var(--accent);
     border-radius: 25px;
     padding: 20px;
 }

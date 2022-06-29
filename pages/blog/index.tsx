@@ -69,7 +69,6 @@ const BlogListPage = (props:any) => {
                             <FontAwesomeIcon className={styles.dashViewsIcon} icon={faEye}/>
                             <p className={`mx-2`}>{article.views}</p>
                         </div>
-
                     </div>;
                 }) : null }
         </div>

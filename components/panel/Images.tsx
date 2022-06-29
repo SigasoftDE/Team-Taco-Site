@@ -20,7 +20,7 @@ const Images = (props:{images:string[]}) => {
         <div className={`${styles.blogListFlexBox} justify-content-center`}>
             { props.images ? props.images.map((image, index) => {
                 return <div key={index} >
-                    <img src={"./user-uploads/" + ctx?._id + "/" + image} width={280} height={256} className={`${styles.blogListItem} ${styles.blogPreview} ${styles.lightBg} my-2 mx-3`} />
+                    <img src={"./api/serve/" + ctx?._id + "/" + image} width={280} height={256} className={`${styles.blogListItem} ${styles.blogPreview} ${styles.lightBg} my-2 mx-3`} />
                 </div>;
             }) : null}
         </div>

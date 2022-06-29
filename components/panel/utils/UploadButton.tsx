@@ -20,7 +20,7 @@ const UploadButton = (props:{ title:string, callback?:(file:string) => void }) =
                 return;
             }
             
-            if (file.type !== "image/png" && file.type !== "image/jpeg" && file.type !== "image/jpg" && file.type !== "image/svg") { 
+            if (file.type !== "image/png" && file.type !== "image/jpeg" && file.type !== "image/jpg" && file.type !== "image/svg" && file.type !== "image/gif") { 
                 Swal.fire("Datei ungültig", "Bitte wähle eine Datei mit der Endung .png oder .jpeg", "error");
                 return;
             }
