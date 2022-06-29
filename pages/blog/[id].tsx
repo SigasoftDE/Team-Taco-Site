@@ -135,7 +135,7 @@ const BlogPage = (props:any) => {
                     }
 
                     <div className="col-xs-12 col-md-4 d-flex justify-content-center align-items-center" style={{flexDirection: "column"}}>
-                        <img src={image === "taco-default" ? "/logo.svg" : "/user-uploads/" + image} style={{maxWidth: "100%", maxHeight: "100%", borderRadius: "25px"}} alt="blogImage"  className="" />
+                        <img src={image === "taco-default" ? "/logo.svg" : "/api/serve/" + image} style={{maxWidth: "100%", maxHeight: "100%", borderRadius: "25px"}} alt="blogImage"  className="" />
                         { editing ? <div className="mt-3"><UploadButton title="Bild ändern" callback={updateImage}  /></div> : null }
                         
                     </div>

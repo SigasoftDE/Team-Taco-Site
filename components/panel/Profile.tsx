@@ -52,7 +52,7 @@ const Profile = (props:{ profilePicture:string }) => {
 
     return <div className={`text-light ${styles.topicPane} d-flex`}>
         <div className={`col-lg-4 d-flex flex-column justify-content-center align-items-center`}>
-            <img src={props.profilePicture === "taco-default" ? "./logo.svg" : "./user-uploads/" + ctx?._id + "/" + props.profilePicture} alt="profilepicture" width={128} height={128} className={styles.profileIcon} />
+            <img src={props.profilePicture === "taco-default" ? "./logo.svg" : "./api/serve/" + ctx?._id + "/" + props.profilePicture} alt="profilepicture" width={128} height={128} className={styles.profileIcon} />
        
             <h5 className={`mt-4`}>Profilbild</h5>
             <UploadButton callback={updateProfile} title="Ändern" /> <p></p><br/>

@@ -62,7 +62,7 @@ export async function getServerSideProps(ctx:any) {
     const acc:Account = (await aHandler.getUserById( aHandler.getUser(cookies.authorization!)!._id!))! as any;
     payload.acc = await JSON.parse(JSON.stringify(acc));
 
-    const path = "./public/user-uploads/" + acc._id + "/";
+    const path = "./user-uploads/" + acc._id + "/";
     if (fs.existsSync(path)) {
         const images = fs.readdirSync(path);
         payload["images"] = images;

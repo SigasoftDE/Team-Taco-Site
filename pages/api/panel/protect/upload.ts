@@ -18,22 +18,22 @@ const upload = multer({
     storage: multer.diskStorage({
         destination: (req, file, cb) => {
             if (!req.headers.cookie) {
-                return cb(new Error('Not authorized'), "./public/user-uploads/unknown/");
+                return cb(new Error('Not authorized'), "./user-uploads/unknown/");
             }
             
             const cookies = cookie.parse(req.headers.cookie!);
             const acc:Account = new AccountHandler().getUser(cookies.authorization!)!;
 
             if (!acc) {
-                return cb(new Error('Not authorized'), "./public/user-uploads/unknown/");
+                return cb(new Error('Not authorized'), "./user-uploads/unknown/");
             }
 
-            const path = './public/user-uploads/' + acc._id;
+            const path = './user-uploads/' + acc._id;
             if (!fs.existsSync(path)) {
                 fs.mkdirSync(path, { recursive: true });
             }
 
-            cb(null, './public/user-uploads/' + acc._id);
+            cb(null, './user-uploads/' + acc._id);
         },
         filename: (req, file, cb) => cb(null, file.originalname)
     }),

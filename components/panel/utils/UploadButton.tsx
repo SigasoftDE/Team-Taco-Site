@@ -13,7 +13,6 @@ const UploadButton = (props:{ title:string, callback?:(file:string) => void }) =
 
     const fileSelected = (event:ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.item(0);
-        console.log("Pick", file);
         if (file) {
             const size = file.size / 1024 ** 2;
             if (size > 10) {
@@ -30,7 +29,6 @@ const UploadButton = (props:{ title:string, callback?:(file:string) => void }) =
     }
 
     const uploadFile = async (file:File) => {
-        console.log(file);
         if (!file) {
             return;
         }
@@ -38,11 +36,7 @@ const UploadButton = (props:{ title:string, callback?:(file:string) => void }) =
         const formData = new FormData();
         formData.append("files", file, file.name);
 
-        const res = await axios.post("/api/panel/protect/upload", formData, { withCredentials: true,
-            onUploadProgress: progressEvent => {
-                const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-                console.log(percentCompleted);
-            }});
+        const res = await axios.post("/api/panel/protect/upload", formData, { withCredentials: true });
 
         if (props.callback) {
             props.callback(file.name);
