@@ -7,7 +7,7 @@ interface BlogPost extends Document {
     visibility: "published" | "draft" | "removed" | "hidden"
     title:string
     body:string
-    images:string[]
+    images:string
     author:string
     views:number
 }

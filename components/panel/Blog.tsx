@@ -2,6 +2,7 @@ import { faEye } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import blogPost from "../../pages/blog/[id]";
 
@@ -15,6 +16,7 @@ let lastFetch:number = -1;
 const BlogManager : NextPage = () => {
     const [articles, setArticles] = useState<BlogPost[]>();
     const [page, setPage] = useState<number>(1);
+    const router = useRouter();
 
     const getArticles = async (newPage:number, initial:boolean) => {
         if (lastFetch + 1000 > Date.now() && initial) {
@@ -49,7 +51,7 @@ const BlogManager : NextPage = () => {
 
         <div className={`${styles.blogListFlexBox}`}>
             { articles ? articles.map((article:BlogPost, index) => {
-                return <div key={index} className={`${styles.blogListItem} ${styles.blogPreview} ${styles.lightBg} my-2 mx-3`}>
+                return <div onClick={e => router.push("/blog/" + article._id)} key={index} className={`${styles.blogListItem} ${styles.blogPreview} ${styles.lightBg} my-2 mx-3`}>
                     <h6 className="mb-3">{article.title.substring(0, 20)}</h6>
                     <p>{article.body.substring(0, 200)}</p>
 

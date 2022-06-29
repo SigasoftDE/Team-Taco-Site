@@ -41,7 +41,7 @@ const BlogListPage = (props:any) => {
         }
     }
 
-    return <section id="blogListPage" className="bg vh-100">
+    return <section id="blogListPage" className="fullPageBg">
         <Head>
             <title>Team taco. | Blog</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -60,8 +60,8 @@ const BlogListPage = (props:any) => {
         <div className="row justify-content-center">
             { articles ? articles.map((article:BlogPost, index) => {
                     return <div onClick={e => router.push("/blog/" + article._id)} key={index} className={`col-xs-12 col-md-3 ${styles.lightBg} my-2 mx-3`}>
-                        <h6 className="mb-3">{article.title.substring(0, 20)}</h6>
-                        <p>{article.body.substring(0, 200)}</p>
+                        <h6 className="mb-3">{article.title == undefined ? "Undefined" : article.title.substring(0, 20)}</h6>
+                        <p>{article.body == undefined ? "Undefined" : article.body.substring(0, 200)}</p>
 
                         <div className="d-flex mt-3">
                             <FontAwesomeIcon className={styles.dashViewsIcon} icon={faEye}/>

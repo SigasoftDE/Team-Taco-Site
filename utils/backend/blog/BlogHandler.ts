@@ -46,10 +46,17 @@ export default class BlogHandler  {
 
 
     async fetchPost(id:string) {
+        if (!isValidObjectId(id)) {
+            return null;
+        }
+
         const col = await getCollection();
 
         const post = await col.findOne({ _id: new ObjectId(id) });
-        col.updateOne({ _id: new ObjectId(id) }, { $inc: { views: 1 } }, {upsert: true});
+
+        if (post) {
+            col.updateOne({ _id: new ObjectId(id) }, { $inc: { views: 1 } }, {upsert: true});
+        }
 
         return post;
         // TODO format respond obj
@@ -63,7 +70,7 @@ export default class BlogHandler  {
             visibility,
             title,
             body,
-            images: [],
+            images: "taco-default",
             author,
             views: 0
         }
@@ -71,12 +78,56 @@ export default class BlogHandler  {
         await col.insertOne(post as any);
     }
 
-    async updatePost(post:BlogPost) {
-        // validate check
+    async deletePost(id:string) {
+        if (!isValidObjectId(id)) {
+            return false;
+        }
+
+        const col = await getCollection();
+        await col.deleteOne({ _id: new ObjectId(id) });
+        return true; 
+    }
+
+    async updateImage(id:string, image:string) {
+        if (!isValidObjectId(id)) {
+            return false;
+        }
+
+        const col = await getCollection();
+        if (!await col.findOne({ _id: new ObjectId(id) })) {
+            return false;
+        }
+
+        await col.updateOne({ _id: new ObjectId(id) }, { $set: { images: image }}, {upsert: true});
+        return true;
+    }
+
+    async updatePost(id:string, title:string, body:string, visibility: "published" | "draft" | "removed" | "hidden") {
+        if (!isValidObjectId(id)) {
+            return false;
+        }
+
+        const col = await getCollection();
+        if (!await col.findOne({ _id: new ObjectId(id) })) {
+            return false;
+        }
+
+        await col.updateOne({ _id: new ObjectId(id) }, { $set: { title, body, visibility }}, {upsert: true});
+        return true;
     }
 }
 
 const getCollection = async () => {
     const client:MongoClient = await clientPromise;
     return client.db(process.env.DATABASE_NAME).collection(process.env.COLLECTION_POST!);
+}
+
+function isValidObjectId(id:string){
+    
+    if(ObjectId.isValid(id)){
+        if((String)(new ObjectId(id)) === id)
+            return true;
+        return false;
+    }
+    return false;
 }

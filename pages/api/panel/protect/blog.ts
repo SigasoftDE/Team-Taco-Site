@@ -27,6 +27,38 @@ export default async function (req:NextApiRequest, res:NextApiResponse) {
         return res.json({success: true, response: "Success!"});
     }
 
+    if (order === "delete") {
+        const { id } = req.body;
+        if (!id) {
+            return res.json({success: false, response: "No id provided!"});
+        }
+
+        blogHandler.deletePost(id);
+        return res.json({success: true, response: "Success!"});
+    }
+
+    if (order === "updateImage") {
+        const { id, image } = req.body;
+        if (!id || !image) {
+            return res.json({success: false, response: "No id or image provided!"});
+        }
+
+        console.log("Updating image", image);
+
+        blogHandler.updateImage(id, image);
+        return res.json({success: true, response: "Success!"});
+    }
+
+    if (order === "updatePost") {
+        const { id, title, body, visibility } = req.body;
+        if (!id || !title || !body || !visibility) {
+            return res.json({success: false, response: "No id, title, body or visibility provided!"});
+        }
+
+        blogHandler.updatePost(id, title, body, visibility);
+        return res.json({success: true, response: "Success!"});
+    }
+
 
 }
 

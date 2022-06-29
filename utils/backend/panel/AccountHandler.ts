@@ -78,6 +78,10 @@ export default class AccountHandler {
     }
 
     async getUserById(id:string) {
+        if (!isValidObjectId(id)) {
+            return null;    
+        }
+
         const col = await getCollection();
         const acc = await col.findOne({_id: new ObjectId(id)});
 
@@ -112,4 +116,14 @@ export default class AccountHandler {
 const getCollection = async () => {
     const client:MongoClient = await clientPromise;
     return client.db(process.env.DATABASE_NAME).collection(process.env.COLLECTION_ACC!);
+}
+
+function isValidObjectId(id:string){
+    
+    if(ObjectId.isValid(id)){
+        if((String)(new ObjectId(id)) === id)
+            return true;
+        return false;
+    }
+    return false;
 }

@@ -38,7 +38,7 @@ const UploadButton = (props:{ title:string, callback?:(file:string) => void }) =
         const formData = new FormData();
         formData.append("files", file, file.name);
 
-        const res = await axios.post("api/panel/protect/upload", formData, { withCredentials: true,
+        const res = await axios.post("/api/panel/protect/upload", formData, { withCredentials: true,
             onUploadProgress: progressEvent => {
                 const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
                 console.log(percentCompleted);
