@@ -21,13 +21,7 @@ export default class BlogHandler  {
             });
         }
 
-        return (loggedIn ? response : filtered).slice((page-1)*pageLimit, page*pageLimit);
-    }
-
-    async getMaxPages() {
-        const col = await getCollection();
-        const response:any = await col.find({}).toArray();
-        return Math.ceil(response.length/pageLimit);
+        return {response: (loggedIn ? response : filtered).slice((page-1)*pageLimit, page*pageLimit), maxPages: Math.ceil((loggedIn ? response : filtered).length/pageLimit)};
     }
 
     async fetchMostviewed(targetId:string) {

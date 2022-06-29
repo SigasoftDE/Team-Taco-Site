@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { myAccountContext } from "../../components/panel/AccountContext";
+import { visibilityToString } from "../../components/panel/utils/BlogCreate";
 
 const BlogPage = (props:any) => {
     const router = useRouter();
@@ -28,7 +29,7 @@ const BlogPage = (props:any) => {
     const created = new Date(post ? post.createdAt : "");
     const [title, setTitle] = useState<string>(post ? post.title : "undefined");
     const [body, setBody] = useState<string>(post ? post.body + "" : "undefined");
-    const [visibility, setVisibility] = useState<boolean>(post ? post.visibility : "undefined");
+    const [visibility, setVisibility] = useState<"published" | "draft" | "removed" | "hidden">(post ? post.visibility : "undefined");
     const [image, setImage] = useState<string>(post ? post.images : "undefined");
     const [editing, setEditing] = useState<boolean>(false);
 
@@ -78,13 +79,13 @@ const BlogPage = (props:any) => {
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"  />
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" async />
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" async />
             <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js' async /> 
         </Head>
 
         <Navbar />
 
-        <div className={styles.topicPane} style={{ maxWidth: "1500px" }}>
+        <div className={styles.topicPane} style={{ maxWidth: "1500px", width: "90%" }}>
             <form>
                 {
                     editing ? <div className={stylesDash.txtField}>
@@ -94,12 +95,33 @@ const BlogPage = (props:any) => {
                     <h3>{title}</h3>
                 }
 
-                <p>{props.authorName} | {created.getDate() +  "." + created.getMonth() + "." + created.getFullYear()}</p>
+                <div className="d-flex">
+                    <p style={{ transform: "translateY(4px)"}}>{props.authorName} | {created.getDate() +  "." + created.getMonth() + "." + created.getFullYear()}</p>
+
+                    {
+                        editing ? <div className="dropdown mx-3">
+                                    <button className="btn btn-outline-light btn-sm dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Sichtbarkeit
+                                    </button>
+                                    <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                        <li><div onClick={e => setVisibility("draft")} className="dropdown-item active" >Entwurf</div></li>
+                                        <li><div onClick={e => setVisibility("published")} className="dropdown-item" >Öffentlich</div></li>
+                                        <li><div onClick={e => setVisibility("hidden")} className="dropdown-item" >Versteckt</div></li>
+                                        <li><hr className="dropdown-divider" /></li>
+                                        <li><div onClick={e => setVisibility("removed")} className="dropdown-item" >Entfernt</div></li>
+                                    </ul>
+                        </div> : null
+                 }
+                </div>
+                
+                { editing ? <p>Sichtbarkeit: {visibilityToString(visibility)}</p> : null}
 
                 <div className="d-flex mt-3">
                     <FontAwesomeIcon className={listStyles.dashViewsIcon} icon={faEye}/>
                     <p className={`mx-2`}>{post.views}</p>
                 </div>
+
+                
 
                 <div className="row">
                     {

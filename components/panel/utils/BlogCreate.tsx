@@ -64,7 +64,7 @@ const saveArticle = async (title: string, body: string, visibility: "published" 
     }
 }
 
-const visibilityToString = (visibility: "published" | "draft" | "removed" | "hidden") => {
+export const visibilityToString = (visibility: "published" | "draft" | "removed" | "hidden") => {
     switch(visibility) {
         case "published":
             return "Öffentlich";

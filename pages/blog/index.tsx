@@ -19,6 +19,7 @@ const BlogListPage = (props:any) => {
     const [articles, setArticles] = useState<BlogPost[]>();
     const [page, setPage] = useState<number>(1);
     const router = useRouter();
+    maxPage = props.maxPages;
 
     if ((articles == undefined || articles?.length === 0) && props.filtered.length !== 0) {
         setArticles(props.filtered);
@@ -79,15 +80,15 @@ const BlogListPage = (props:any) => {
 export async function getServerSideProps(ctx:any) {
 
     const cookies = cookie.parse(ctx.req.headers.cookie + "");
-    const loggedIn = !cookies.authorization || new AccountHandler().verifyCookie(cookies.authorization!);
+    const loggedIn = cookies.authorization !== undefined && new AccountHandler().verifyCookie(cookies.authorization!);
 
     const handler = new BlogHandler();
-    const data = await handler.fetchLatest(1, loggedIn);
+    const {response, maxPages} = await handler.fetchLatest(1, loggedIn);
 
-    const filtered = await JSON.parse(JSON.stringify(data));
+    const filtered = await JSON.parse(JSON.stringify(response));
 
     return { 
-        props: {filtered}
+        props: {filtered, maxPages}
     }
 }
 

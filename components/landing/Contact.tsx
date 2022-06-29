@@ -23,7 +23,7 @@ const Contact:NextPage = () => {
             </div>
 
             <div className={styles.socials}>
-                <Link href="/blog">
+                <Link href="/blog" style={{ textDecoration: "none"}}>
                     <div id="blogBtn" className={`${styles.social} ${styles.blog}`}>
                     Unser Blog
                     </div>

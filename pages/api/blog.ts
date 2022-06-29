@@ -15,7 +15,10 @@ export default async function (req:NextApiRequest, res:NextApiResponse) {
 
     if (order == "fetchAll") {
         const { page } = req.body;
-        return res.json({success: true, response: await blogHandler.fetchLatest(page ? page : 1, account.username !== undefined), maxPages: await blogHandler.getMaxPages()});
+
+        const { response, maxPages } = await blogHandler.fetchLatest(page ? page : 1, account.username !== undefined);
+
+        return res.json({success: true, response, maxPages});
     }
 
     if (order == "mostViewed") {
