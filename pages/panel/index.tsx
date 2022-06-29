@@ -40,8 +40,8 @@ const BlogDashboard = (props:{ exportObj:{images:string[], acc:Account}, success
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"  />
         </Head>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" ></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" async />
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js' async />
 
         <div className={`container bg-transparent ${styles.panel}`}>
             <PanelNav updateSelection={(newSel) => setSelection(newSel)} />
@@ -51,7 +51,7 @@ const BlogDashboard = (props:{ exportObj:{images:string[], acc:Account}, success
 }
 
 export async function getServerSideProps(ctx:any) {
-    const cookies = cookie.parse(ctx.req.headers.cookie);
+    const cookies = cookie.parse(ctx.req.headers.cookie + "");
     if (!cookies.authorization || !new AccountHandler().verifyCookie(cookies.authorization!)) {
         return { props: { success: false}};
     }

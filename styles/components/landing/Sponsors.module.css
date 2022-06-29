@@ -4,7 +4,7 @@
 }
 
 .scale {
-    background: transparent url("http://localhost:3000/img/pond.svg") no-repeat;
+    background: transparent url("http://localhost/img/pond.svg") no-repeat;
     transform: scale(0.75);
 }
 

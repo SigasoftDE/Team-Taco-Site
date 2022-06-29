@@ -36,7 +36,6 @@ const Profile = (props:{ profilePicture:string }) => {
     }
 
     const updateProfile = async (file:string) => {
-        console.log("updaing profile picture", file);
         const res = await axios.post("api/panel/protect/users", {
             order: "updateProfilePicture",
             picture: file

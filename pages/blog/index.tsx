@@ -1,7 +1,6 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
-import BlogList from "../../components/blog/BlogList";
 import Navbar from "../../components/landing/Navbar";
 import BlogHandler from "../../utils/backend/blog/BlogHandler";
 import BlogPost from "../../utils/backend/blog/BlogPost";
@@ -47,11 +46,13 @@ const BlogListPage = (props:any) => {
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"  />
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" ></script>
-            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" async />
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js' async />
         </Head>
         <Navbar />
         
+        <h2 className="text-center text-light">Unser Blog</h2>
+
         <div className="d-flex justify-content-center">
             <div onClick={e => getArticles(page - 1 > 1 ? page - 1 : 1, false)} className={`btn btn-outline-light my-3 mx-2 ${page === 1 ? "disabled" : ""}`}>{"<"}</div>
             <div onClick={e => getArticles(page + 1, false)} className={`btn btn-outline-light my-3 mx-2 ${maxPage === page ? "disabled" : ""}`}>{">"}</div>
@@ -59,7 +60,7 @@ const BlogListPage = (props:any) => {
 
         <div className="row justify-content-center">
             { articles ? articles.map((article:BlogPost, index) => {
-                    return <div onClick={e => router.push("/blog/" + article._id)} key={index} className={`col-xs-12 col-md-3 ${styles.lightBg} my-2 mx-3`}>
+                    return <div onClick={e => router.push("/blog/" + article._id)} key={index} className={`col-xs-12 col-md-3 ${styles.lightBg} my-2 mx-3`} style={{maxWidth: "90%"}}>
                         <h6 className="mb-3">{article.title == undefined ? "Undefined" : article.title.substring(0, 20)}</h6>
                         <p>{article.body == undefined ? "Undefined" : article.body.substring(0, 200)}</p>
 
@@ -77,7 +78,7 @@ const BlogListPage = (props:any) => {
 
 export async function getServerSideProps(ctx:any) {
 
-    const cookies = cookie.parse(ctx.req.headers.cookie);
+    const cookies = cookie.parse(ctx.req.headers.cookie + "");
     const loggedIn = !cookies.authorization || new AccountHandler().verifyCookie(cookies.authorization!);
 
     const handler = new BlogHandler();

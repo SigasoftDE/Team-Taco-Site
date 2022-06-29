@@ -23,6 +23,15 @@ const BlogPage = (props:any) => {
     const router = useRouter();
     const { post, loggedIn } = props;
 
+    const ctx = useContext(myAccountContext);
+
+    const created = new Date(post ? post.createdAt : "");
+    const [title, setTitle] = useState<string>(post ? post.title : "undefined");
+    const [body, setBody] = useState<string>(post ? post.body + "" : "undefined");
+    const [visibility, setVisibility] = useState<boolean>(post ? post.visibility : "undefined");
+    const [image, setImage] = useState<string>(post ? post.images : "undefined");
+    const [editing, setEditing] = useState<boolean>(false);
+
     useEffect(() => {
         if (!post) {
             router.push("/404");
@@ -34,14 +43,6 @@ const BlogPage = (props:any) => {
             404
         </div>
     }
-
-    const created = new Date(post.createdAt);
-    const ctx = useContext(myAccountContext);
-    const [title, setTitle] = useState<string>(post.title);
-    const [body, setBody] = useState<string>(post.body);
-    const [visibility, setVisibility] = useState<boolean>(post.visibility);
-    const [image, setImage] = useState<string>(post.images);
-    const [editing, setEditing] = useState<boolean>(false);
 
     const updateImage = async (file:string) => {
         const res = await axios.post("/api/panel/protect/blog", {
@@ -71,19 +72,19 @@ const BlogPage = (props:any) => {
         }
     }
 
-    return <div className="fullPageBg">
+    return <div className="fullPageBg d-flex justify-content-center align-items-center" style={{ flexDirection: "column"}}>
         <Head>
             <title>Team taco. | Blog</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"  />
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" ></script>
-            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" async />
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js' async /> 
         </Head>
 
         <Navbar />
 
-        <div className={styles.topicPane}>
+        <div className={styles.topicPane} style={{ maxWidth: "1500px" }}>
             <form>
                 {
                     editing ? <div className={stylesDash.txtField}>
@@ -108,7 +109,7 @@ const BlogPage = (props:any) => {
                                     <label>Inhalt</label>
                                 </div>
                             </div> :
-                            <p className="col-xs-12 col-md-8" dangerouslySetInnerHTML={{__html: body.replaceAll(/\n/g, "<br />")}}></p>
+                            <p className="col-xs-12 col-md-8" dangerouslySetInnerHTML={{__html: body.replace(/\n/g, "<br />")}}></p>
                     }
 
                     <div className="col-xs-12 col-md-4 d-flex justify-content-center align-items-center" style={{flexDirection: "column"}}>
@@ -126,30 +127,23 @@ const BlogPage = (props:any) => {
                         <div onClick={updatePost} className="btn btn-outline-success mx-2">Änderungen speichern</div>
                         <div onClick={e => deletePost(post._id)} className="btn btn-outline-danger mx-2 ">Artikel Löschen</div>
                     </> : null }
-
                 </div>
-                
-
-                
             </form>
         </div>
-
-        
-
     </div>
 }
 
 export async function getServerSideProps(ctx:any) {
     const { id } = ctx.query;
 
-    const cookies = cookie.parse(ctx.req.headers.cookie);
+    const cookies = cookie.parse(ctx.req.headers.cookie + "");
     const loggedIn = cookies.authorization != undefined && new AccountHandler().verifyCookie(cookies.authorization!);
 
     const bHandler = new BlogHandler();
     const post = await JSON.parse(JSON.stringify(await bHandler.fetchPost(id)));
 
     if (!post || (post.visibility !== "published" && !loggedIn)) {
-        return { props: { post: null, loggedIn: false, authorName: null } };
+        return { props: { loggedIn: false } };
     }
 
     const aHandler = new AccountHandler();
