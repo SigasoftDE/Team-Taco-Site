@@ -30,7 +30,7 @@ const BlogCreate : NextPage = () => {
 
                 <div className={`${styles.lightBg} w-25 mx-4`}>
                     <h6>Autor: {ctx?.username}</h6>
-                    <h6>Datum: {created.getDate() + "." + created.getMonth() + "." + created.getFullYear()}</h6>
+                    <h6>Datum: {created.getDate() + "." + (created.getMonth() + 1) + "." + created.getFullYear()}</h6>
                     <h6>Sichtbarkeit: {visibilityToString(visibility)}</h6>
 
                     <div className="dropdown my-3">

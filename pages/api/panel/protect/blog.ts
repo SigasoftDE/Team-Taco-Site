@@ -23,7 +23,7 @@ export default async function (req:NextApiRequest, res:NextApiResponse) {
             return res.json({success: false, response: "No title, body or visibility provided!"});
         }
 
-        if (body.contains("script")) {
+        if (body.includes("script")) {
             return res.json({success: false, response: "Scripts are not allowed!"});
         }
 
@@ -56,7 +56,7 @@ export default async function (req:NextApiRequest, res:NextApiResponse) {
     if (order === "updatePost") {
         const { id, title, body, visibility } = req.body;
 
-        if (body.contains("script")) {
+        if (body.includes("script")) {
             return res.json({success: false, response: "Scripts are not allowed!"});
         }
 

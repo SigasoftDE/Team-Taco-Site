@@ -100,7 +100,7 @@ const BlogPage = (props:any) => {
                 }
 
                 <div className="d-flex">
-                    <p style={{ transform: "translateY(4px)"}}>{props.authorName} | {created.getDate() +  "." + created.getMonth() + "." + created.getFullYear()}</p>
+                    <p style={{ transform: "translateY(4px)"}}>{props.authorName} | {created.getDate() +  "." + (created.getMonth() + 1) + "." + created.getFullYear()}</p>
 
                     {
                         editing ? <div className="dropdown mx-3">
