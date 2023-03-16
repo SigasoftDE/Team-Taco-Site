@@ -35,7 +35,7 @@ const Team : NextPage = () => {
                 </div>
                 <div className="col-md-3 col-sm-3 member">
                     <img src="./img/pb-blobs/green.png" alt="green-blob" className={styles.pb} />
-                    <h4>Katharinna</h4>
+                    <h4>Katharina</h4>
                 </div>
                 <div className="col-md-3 col-sm-3 member">
                     <img src="./img/pb-blobs/orange.png" alt="orange-blob" className={styles.pb} />

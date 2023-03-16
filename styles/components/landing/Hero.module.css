@@ -65,7 +65,7 @@
 
 @media screen and (max-width: 735px) {
     .section img.logoImage {
-        object-fit: none;
+        object-fit: contain;
         transform: scale(2);
     }
 }

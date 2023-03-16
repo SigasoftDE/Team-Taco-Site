@@ -23,24 +23,16 @@ const Sponsors : NextPage = () => {
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
                     </div>
                     <div className={`carousel-inner`}>
                         <div className="carousel-item active">
-                            <img src="./img/sponsors/3DDesign24.png" className={`d-block w-100`}/>
+                            <img src="./img/sponsors/data-experts-logo.png" className={`d-block w-100`}/>
                         </div>
                         <div className="carousel-item">
-                            <img src="./img/sponsors/originalraeder.png" className={`d-block w-100`}/>
+                            <img src="./img/sponsors/schwarzware.png" className={`d-block w-100`}/>
                         </div>
                         <div className="carousel-item">
-                            <img src="./img/sponsors/globus.png" className={`d-block w-100`}/>
-                        </div>
-                        <div className="carousel-item">
-                            <img src="./img/sponsors/volksbank.png" className={`d-block w-100`}/>
-                        </div>
-                        <div className="carousel-item">
-                            <img src="./img/sponsors/daheim_restaurant.png" className={`d-block w-100   `}/>
+                            <img src="./img/sponsors/sailandsurf.png" className={`d-block w-100`}/>
                         </div>
                     </div>
                     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -59,26 +51,14 @@ const Sponsors : NextPage = () => {
                     <h3>Marketing & Partnerschaften</h3>
 
                     <p>
-                    Kam ein Sponsoring in
-                    Frage, erhielten die Unternehmen die Details
-                    per Email oder wenn die Unternehmen in
-                    unserer Nähe lagen gingen wir auch persönlich
-                    vorbei. Unser Marketingkonzept zielte
-                    hauptsächlich auf eine enge und effiziente
-                    Zusammenarbeit mit unseren Partnern sowie
-                    förderliche und klare Kommunikation ab. <br/> <br/>
-                    Unser Bestreben, die Sponsoren über unsere
-                    Arbeit zu informieren, zeigten wir ebenfalls
-                    beim Gestalten unserer Website und das
-                    Entwerfen unseres Flyers. Bei Letzterem
-                    kooperierten wir mit einem anderen Team. <br/>
-                    Diese Zusammenarbeit verlieh uns gleichzeitig
-                    auch einen Einblick in die Ideen und die
-                    Organisation zur Durchführung und Gestaltung
-                    der Aufgaben der anderen Gruppe. So
-                    unterstützten und inspirierten wir uns
-                    gegenseitig und verminderten das
-                    Konkurrenzdenken.
+                    Im Laufe der Arbeitsphase begaben wir uns auch auf die Suche nach Sponsoren. 
+                    Unser erster Schritt war dabei, die Unternehmen, welche wir zunächst heraussuchten und auflisteten, anzurufen. War der telefonische Kontakt erfolgreich, 
+                    erhielten die Unternehmen die genauen Details unserer Zusammenarbeit per Email. Hierfür haben wir letzte Saison eine Team-Email-Adresse eingerichtet. 
+                    Wenn sich die Unternehmen in unserer Nähe befanden, statteten wir ihnen auch Besuche ab, um den Kontakt persönlicher zu gestalten, oder luden sie zu uns in 
+                    die Schule ein. Bei unseren Partnerschaften standen vor allem eine klare und förderliche Kommunikation sowie eine 
+                    enge und effiziente Zusammenarbeit im Vordergrund. <br/> <br/>
+
+                    Im Austausch für den Geldbetrag oder das gesponserte Material erwähnen wir die Sponsoren auf der Website, in unserem Unternehmensportfolio und in unserem Teamstand.
                     </p>
                 </div>
 

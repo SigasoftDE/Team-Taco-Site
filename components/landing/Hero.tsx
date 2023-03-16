@@ -23,7 +23,7 @@ const Hero : NextPage = () => {
       })
 
     return <section className={styles.section}>
-        <img src="./logo.svg" className={styles.logoImage} />
+        <img src="./logo.png" className={styles.logoImage} />
         <img src="./img/desert-bg.png" className={styles.desert} alt="desert" />
         <img src="./img/cloud1.png" className={styles.cloud1} alt="cloud1" id="cloud1" />
         <img src="./img/cloud2.png" className={styles.cloud2} alt="cloud2" id="cloud2" />
